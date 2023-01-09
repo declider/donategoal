@@ -32,4 +32,6 @@ function copy_link() {
     let link = document.getElementById("link").value
     navigator.clipboard.writeText(link)
     alert("Ссылка для OBS скопирована!")
+    link = document.getElementById("link").value
+    navigator.clipboard.writeText(link)
 }

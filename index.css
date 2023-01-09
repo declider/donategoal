@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap');
+
+body {
+    background-repeat: no-repeat;
+    /* background: linear-gradient(#171717, #202020) fixed; */
+    background-color: #1f1f1f; /* #202020 */
+    text-align: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(224, 224, 224);
+    display: flex;
+    font-weight: 300;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+.column {
+    flex: 50%;
+}
+
+header {
+    font-size: 2em;
+    font-weight: 500;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature {
+    font-family: 'Roboto', sans-serif;
+    margin: 8px;
+    font-size: 30px;
+    line-height: 2;
+}
+
+input {
+    background-color: #343434;
+    border: none;
+    font-size: 1em;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 0.4vh;
+    color: white;
+    padding: 2px;
+}
+
+#link {
+    width: 34%;
+}
+
+#dptoken {
+    width: 8%;
+}
+
+.auth {
+    background: dimgray;
+    color: black;
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    border: none;
+    padding: 4px;
+}
+
+#copy {
+    background-color: #0e0e0e;
+    border: 1px solid black;
+    font-size: 1em;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 0.4vh;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(224, 224, 224);
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ДонатГол для людей</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="column">
+        <img src="https://raw.githubusercontent.com/declider/somestuff/main/donategoal/images/example.gif" width="54%"><br><br><br>
+        <ul id="features">
+            <li class="feature">Быстрое обнуление и редактировение данных</li>
+            <li class="feature">Автообнуление/автоувеличение данных при заполнении</li>
+            <li class="feature">Счётчик заполненных сборов</li>
+            <li class="feature">Быстрая настройка напрямую в OBS</li>
+            <li class="feature">Поддержка DonationAlerts и DonatePay одновременно</li>
+        </ul>
+    </div>
+    <div class="column">
+        Авторизуйся на <strong>DonationAlerts</strong> нажав 
+
+        <a class="auth"
+            href="https://www.donationalerts.com/oauth/authorize?client_id=10375&redirect_uri=https://declider.github.io/somestuff/donategoal/&response_type=code&scope=oauth-donation-subscribe+oauth-user-show+oauth-donation-index&force_verify=true"
+        >СЮДА</a>
+
+        <br>и/или<br>
+
+        Вставь <input type="password" id="dptoken" placeholder="сюда" onchange="addDPToken()"> ключ API для <strong>DonatePay</strong>
+        взяв его <a class="auth" href="https://donatepay.ru/page/api" target="_blank">ЗДЕСЬ</a><br><br><br>
+
+        Скопируй ссылку и вставь её в <strong>OBS</strong> как источник браузера, выставив нужную ширину<br>
+        
+        <input type="password" id="link" placeholder="Тут будет ссылка для OBS" readonly>
+        <button id="copy" onclick="copy_link()">Скопировать</button><br><br>
+
+        <img src="https://raw.githubusercontent.com/declider/somestuff/main/donategoal/images/add.png" width="54%"><br><br><br>
+        Для настройки сбора жми <strong>ПКМ</strong>
+        по источнику в OBS и выбери
+        <strong>Взаимодействовать</strong><br><br>
+
+        <img src="https://raw.githubusercontent.com/declider/somestuff/main/donategoal/images/interact.png" width="54%"><br><br><br>
+        Обрежь источник через зажатую клавишу <strong>ALT</strong><br>
+        <img src="https://raw.githubusercontent.com/declider/somestuff/main/donategoal/images/crop.gif" width="44%">
+        
+    </div>
+
+    <script type="text/javascript" src="index.js"></script>
+
+</body>
+</html>

@@ -7,7 +7,7 @@ async function auth() {
     
 }
 
-let url = new URL("https://declider.github.io/somestuff/donategoal/widget/widget.html")
+let url = new URL("https://declider.github.io/donategoal/widget/")
 
 let params = (new URL(document.location)).searchParams
 let code = params.get("code") || undefined

@@ -9,12 +9,6 @@ async function startDP() {
     let data = await getDPData()
     centrifugeDP.setToken(data.token)
 
-    centrifugeDP.subscribe("$public:"+data.id, function (message) {
-        let sum = message.data.notification.vars.sum
-        console.log(message)
-        add_sum(sum)
-    });
-
     centrifugeDP.on('error', (e) => {
         console.log('error', e)
         setTimeout(centrifugeDP.connect(), 5000)
@@ -25,7 +19,11 @@ async function startDP() {
     })
 
     centrifugeDP.on('connect', (e) => {
-        console.log(e)
+        centrifugeDP.subscribe("$public:"+data.id, function (message) {
+            let sum = message.data.notification.vars.sum
+            console.log(message)
+            add_sum(sum)
+        })
         console.log("Подключен DonatePay")
     })
 

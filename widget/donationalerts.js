@@ -13,7 +13,7 @@ async function startDA() {
     centrifugeDA.setToken(await getDAData())
 
     centrifugeDA.on('error', (e) => {
-        console.log('error', e)
+        setTimeout(centrifugeDA.connect(), 5000)
     })
 
     centrifugeDA.on('subscribe', (e) => {

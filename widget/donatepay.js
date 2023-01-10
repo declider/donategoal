@@ -17,6 +17,7 @@ async function startDP() {
 
     centrifugeDP.on('error', (e) => {
         console.log('error', e)
+        setTimeout(centrifugeDP.connect(), 5000)
     })
 
     centrifugeDP.on('subscribe', (e) => {

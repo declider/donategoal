@@ -35,7 +35,7 @@ function change_now(number) {
         while(now>=end) {
             let maxCount = countValueMax.valueAsNumber
             if(maxCount==0 || count<maxCount){
-                now = Math.abs(end-now)
+                now = parseFloat(Math.abs(end-now).toFixed(2))
                 nowValue.value = now
                 change_count(count+=1)
 

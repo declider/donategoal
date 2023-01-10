@@ -51,6 +51,7 @@ function change_now(number) {
         }
     }
     change_percent()
+    saveStorage()
 }
 
 

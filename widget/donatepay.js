@@ -11,12 +11,14 @@ async function startDP() {
 
     centrifugeDP.on('error', (e) => {
         console.log("error",e)
-        cengtifugeDP.disconnect()
-        setTimeout(centrifugeDP.connect(), 2000)
+        if(!centrifugeDP.isConnected()){
+            centrifugeDP.connect()
+        }
     })
 
-    centrifugeDP.on('subscribe', (e) => {
-        console.log('subscribe', e)
+    centrifugeDP.on('disconnect', (e) => {
+        console.log("DP отключён!")
+        centrifugeDP.connect()
     })
 
     centrifugeDP.on('connect', (e) => {
@@ -33,6 +35,6 @@ async function startDP() {
 }
 
 
-if(dptoken){
+if( dptoken && !centrifugeDP.isConnected() ){
     startDP()
 }

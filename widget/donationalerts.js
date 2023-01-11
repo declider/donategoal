@@ -11,7 +11,6 @@ async function getDAData() {
 
 async function startDA() {
     let channel = '$alerts:donation_'+daid
-    let da_clients = -1
     centrifugeDA.setToken(await getDAData())
 
     centrifugeDA.on('error', (e) => {
@@ -26,7 +25,7 @@ async function startDA() {
         centrifugeDA.connect()
     })
     
-    let subDA = centrifugeDA.subscribe(channel, message => {
+    centrifugeDA.subscribe(channel, message => {
         let sum = message.data.amount_in_user_currency
         console.log(message)
         add_sum(sum)

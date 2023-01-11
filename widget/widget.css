@@ -13,6 +13,11 @@ body {
     background: none;
 }
 
+* {
+    font-family: 'Roboto', sans-serif;
+    color: rgb(224,224,224);
+}
+
 #donategoal {
     margin-top: 2%;
     margin-left: 2%;
@@ -22,7 +27,6 @@ body {
 
 #donategoal > * {
     font-size: 50px;
-    font-family: 'Roboto', sans-serif;
     position: absolute;
     text-align: center;
     font-weight: 700;
@@ -34,7 +38,6 @@ body {
     top: 55px;
     width: 96%;
     height: 80px;
-    
     border-radius: 5px;
 }
 
@@ -51,7 +54,8 @@ body {
 
 #title {
     top: 3px;
-    left: 20px;
+    transform: translate(-50%, 0%);
+    left: 50%;
 }
 
 #start {
@@ -72,14 +76,30 @@ body {
 }
 
 #settings {
-    background-color: rgb(80, 80, 80);
+    background-color: #414141;
     width: 100%;
     text-align: center;
 }
 
 p {
+    background-color: #2b2b2b;
     color: white;
     font-size: 18px;
-    background-color: dimgray;
-    font-weight: 300;
+    font-weight: 500;
+    padding: 3px;
 }
+
+input {
+    background-color: #313131;
+    border: none;
+    padding: 4px;
+}
+
+button {
+    background-color: #c5c5c5;
+    border: none;
+    padding: 4px;
+    color: rgb(37, 37, 37);
+    font-size: 16px;
+}
+

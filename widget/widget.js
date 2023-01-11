@@ -139,11 +139,11 @@ function clearStorage() {
 
 window.addEventListener('offline', (event) => {
     console.log("Интернет кончился!")
-    if(dptoken){
+    if( dptoken && centrifugeDP.isConnected() ){
         centrifugeDP.disconnect()
     }
 
-    if(datoken&&daid){
+    if( datoken && daid && centrifugeDA.isConnected() ){
         centrifugeDA.disconnect()
     }
 })
@@ -151,11 +151,11 @@ window.addEventListener('offline', (event) => {
 
 window.addEventListener('online', (event) => {
     console.log("Интернет вернулся!")
-    if(dptoken){
+    if( dptoken && !centrifugeDP.isConnected() ){
         centrifugeDP.connect()
     }
     
-    if(datoken&&daid){
+    if( datoken && daid && !centrifugeDA.isConnected() ){
         centrifugeDA.connect()
     }
 })

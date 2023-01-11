@@ -20,7 +20,6 @@ async function startDP() {
 
     centrifugeDP.on('disconnect', (e) => {
         console.log("DP отключён!")
-        subDP.unsubscribe()
         centrifugeDP.connect()
     })
     

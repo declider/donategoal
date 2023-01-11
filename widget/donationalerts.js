@@ -11,6 +11,7 @@ async function getDAData() {
 
 async function startDA() {
     let channel = '$alerts:donation_'+daid
+    let da_clients = -1
     centrifugeDA.setToken(await getDAData())
 
     centrifugeDA.on('error', (e) => {
@@ -31,8 +32,11 @@ async function startDA() {
         add_sum(sum)
     })
     
+    centrifugeDA.presenceStats(channel).then(function(resp) {
+        da_clients = resp.num_clients
+    })
+    
     centrifugeDA.on('connect', (e) => {
-        let da_clients = 0
         
         centrifugeDA.presenceStats(channel).then(function(resp) {
             da_clients = resp.num_clients

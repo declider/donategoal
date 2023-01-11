@@ -137,25 +137,25 @@ function clearStorage() {
 }
 
 
-window.addEventListener('offline', (event) => {
-    console.log("Интернет кончился!")
-    if( dptoken && centrifugeDP.isConnected() ){
-        centrifugeDP.disconnect()
-    }
+// window.addEventListener('offline', (event) => {
+//     console.log("Интернет кончился!")
+//     if( dptoken && centrifugeDP.isConnected() ){
+//         centrifugeDP.disconnect()
+//     }
 
-    if( datoken && daid && centrifugeDA.isConnected() ){
-        centrifugeDA.disconnect()
-    }
-})
+//     if( datoken && daid && centrifugeDA.isConnected() ){
+//         centrifugeDA.disconnect()
+//     }
+// })
 
 
-window.addEventListener('online', (event) => {
-    console.log("Интернет вернулся!")
-    if( dptoken && !centrifugeDP.isConnected() ){
-        centrifugeDP.connect()
-    }
+// window.addEventListener('online', (event) => {
+//     console.log("Интернет вернулся!")
+//     if( dptoken && !centrifugeDP.isConnected() ){
+//         centrifugeDP.connect()
+//     }
     
-    if( datoken && daid && !centrifugeDA.isConnected() ){
-        centrifugeDA.connect()
-    }
-})
+//     if( datoken && daid && !centrifugeDA.isConnected() ){
+//         centrifugeDA.connect()
+//     }
+// })

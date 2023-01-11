@@ -34,12 +34,16 @@ async function startDA() {
     
     centrifugeDA.presenceStats(channel).then(function(resp) {
         da_clients = resp.num_clients
+    }, function(err) {
+        da_clients = 0
     })
-    
+  
     centrifugeDA.on('connect', (e) => {
         
         centrifugeDA.presenceStats(channel).then(function(resp) {
             da_clients = resp.num_clients
+        }, function(err) {
+            da_clients = 0
         })
         
         if(da_clients == 0){

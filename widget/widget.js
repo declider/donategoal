@@ -135,3 +135,27 @@ function clearStorage() {
     window.localStorage.clear()
     loadStorage()
 }
+
+
+window.addEventListener('offline', (event) => {
+    console.log("Интернет кончился!")
+    if(dptoken){
+        centrifugeDP.disconnect()
+    }
+
+    if(datoken&&daid){
+        centrifugeDA.disconnect()
+    }
+})
+
+
+window.addEventListener('online', (event) => {
+    console.log("Интернет вернулся!")
+    if(dptoken){
+        centrifugeDP.connect()
+    }
+    
+    if(datoken&&daid){
+        centrifugeDA.connect()
+    }
+})

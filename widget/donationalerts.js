@@ -31,7 +31,7 @@ async function startDA() {
         add_sum(sum)
     })
     
-    centrifugeDA.on('connect', (e) => {
+    centrifugeDA.on('connected', (e) => {
         let da_clients 
         
         centrifugeDA.presenceStats(channel).then(function(resp) {

@@ -26,28 +26,13 @@ async function startDA() {
         centrifugeDA.connect()
     })
     
-    centrifugeDA.presenceStats(channel).then(function(resp) {
-        da_clients = resp.num_clients
-    }, function(err) {
-        da_clients = 0
+    let subDA = centrifugeDA.subscribe(channel, message => {
+        let sum = message.data.amount_in_user_currency
+        console.log(message)
+        add_sum(sum)
     })
   
-    centrifugeDA.on('connect', (e) => {
-        
-        centrifugeDA.presenceStats(channel).then(function(resp) {
-            da_clients = resp.num_clients
-        }, function(err) {
-            da_clients = 0
-        })
-        
-        if(da_clients == 0){
-            centrifugeDA.subscribe(channel, message => {
-                let sum = message.data.amount_in_user_currency
-                console.log(message)
-                add_sum(sum)
-            })
-        }
-        
+    centrifugeDA.on('connect', (e) => { 
         console.log("Подключен DonationAlerts")
     })
     
@@ -55,7 +40,6 @@ async function startDA() {
         centrifugeDA.connect()
     }
 }
-
 
 if( datoken && daid && !centrifugeDA.isConnected() ){
     startDA()

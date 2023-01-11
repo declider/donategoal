@@ -13,7 +13,9 @@ async function startDA() {
     centrifugeDA.setToken(await getDAData())
 
     centrifugeDA.on('error', (e) => {
-        setTimeout(centrifugeDA.connect(), 5000)
+        console.log("error",e)
+        cengtifugeDA.disconnect()
+        setTimeout(centrifugeDA.connect(), 2000)
     })
 
     centrifugeDA.on('subscribe', (e) => {
@@ -21,12 +23,12 @@ async function startDA() {
     })
 
     centrifugeDA.on('connect', (e) => {
-        console.log("Подключен DonationAlerts")
         centrifugeDA.subscribe('$alerts:donation_'+daid, message => {
             let sum = message.data.amount_in_user_currency
             console.log(message)
             add_sum(sum)
         })
+        console.log("Подключен DonationAlerts")
     })
 
     centrifugeDA.connect()

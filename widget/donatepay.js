@@ -5,8 +5,10 @@ async function getDPData() {
     return await res.json()
 }
 
+
 async function startDP() {
     let data = await getDPData()
+    let channel = "$public:"+data.id
     centrifugeDP.setToken(data.token)
 
     centrifugeDP.on('error', (e) => {
@@ -18,16 +20,26 @@ async function startDP() {
 
     centrifugeDP.on('disconnect', (e) => {
         console.log("DP отключён!")
+        subDP.unsubscribe()
         centrifugeDP.connect()
+    })
+    
+    let subDP = centrifugeDP.subscribe(channel, function (message) {
+        console.log("Подписан на DonatePay")
+        let sum = message.data.notification.vars.sum
+        console.log(message)
+        add_sum(sum)
     })
 
     centrifugeDP.on('connect', (e) => {
-        centrifugeDP.subscribe("$public:"+data.id, function (message) {
-            console.log("Подписан на DonatePay")
-            let sum = message.data.notification.vars.sum
-            console.log(message)
-            add_sum(sum)
-        })
+        if(subDP._status!=3) {
+            subDP = centrifugeDP.subscribe(channel, function (message) {
+                console.log("Подписан на DonatePay")
+                let sum = message.data.notification.vars.sum
+                console.log(message)
+                add_sum(sum)
+            })
+        }
         console.log("Подключен DonatePay")
     })
 

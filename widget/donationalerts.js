@@ -10,7 +10,7 @@ async function getDAData() {
 
 
 async function startDA() {
-    let channel = '$alerts:donation_'+daid
+    let subDA = false
     centrifugeDA.setToken(await getDAData())
 
     centrifugeDA.on('error', (e) => {
@@ -22,21 +22,27 @@ async function startDA() {
 
     centrifugeDA.on('disconnect', (e) => {
         console.log("DA отключён!")
-        subDA.unsubscribe()
         centrifugeDA.connect()
     })
     
+    centrifugeDA.on('unsubscribe', (e) => {
+        console.log('DA подписан', e)
+        subDA = false
+    })
     
-    let subDA = centrifugeDA.newSubscription(channel)
-    
-    subDA.on('message', message => {
-        let sum = message.data.amount_in_user_currency
-        console.log(message)
-        add_sum(sum)
+    centrifugeDA.on('subscribe', (e) => {
+        console.log('DA отписан', e)
+        subDA = true
     })
     
     centrifugeDA.on('connect', (e) => {
-        subDA.subscribe()
+        if(!subDA){
+            centrifugeDA.subscribe('$alerts:donation_'+daid, message => {
+                let sum = message.data.amount_in_user_currency
+                console.log(message)
+                add_sum(sum)
+            })
+        }
         console.log("Подключен DonationAlerts")
     })
     

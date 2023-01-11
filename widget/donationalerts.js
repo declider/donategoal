@@ -25,7 +25,7 @@ async function startDA() {
         centrifugeDA.connect()
     })
     
-    let subDP = centrifugeDA.subscribe(channel, function (message) {
+    let subDA = centrifugeDA.subscribe(channel, function (message) {
         console.log("Подписан на DonationAlerts")
         let sum = message.data.notification.vars.sum
         console.log(message)

@@ -14,12 +14,14 @@ async function startDA() {
 
     centrifugeDA.on('error', (e) => {
         console.log("error",e)
-        cengtifugeDA.disconnect()
-        setTimeout(centrifugeDA.connect(), 2000)
+        if(!centrifugeDA.isConnected()){
+            centrifugeDA.connect()
+        }
     })
 
-    centrifugeDA.on('subscribe', (e) => {
-        console.log('subscribe', e)
+    centrifugeDA.on('disconnect', (e) => {
+        console.log("DA отключён!")
+        centrifugeDA.connect()
     })
 
     centrifugeDA.on('connect', (e) => {
@@ -35,6 +37,6 @@ async function startDA() {
 }
 
 
-if(datoken&&daid){
+if( datoken && daid && !centrifugeDA.isConnected() ){
     startDA()
 }

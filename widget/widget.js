@@ -150,5 +150,5 @@ function clearStorage() {
 
 
 window.addEventListener('online', (event) => {
-    window.location.reload()
+    window.location.reload(true)
 })

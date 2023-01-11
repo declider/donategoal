@@ -149,13 +149,6 @@ function clearStorage() {
 // })
 
 
-// window.addEventListener('online', (event) => {
-//     console.log("Интернет вернулся!")
-//     if( dptoken && !centrifugeDP.isConnected() ){
-//         centrifugeDP.connect()
-//     }
-    
-//     if( datoken && daid && !centrifugeDA.isConnected() ){
-//         centrifugeDA.connect()
-//     }
-// })
+window.addEventListener('online', (event) => {
+    window.location.reload()
+})

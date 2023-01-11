@@ -35,9 +35,9 @@
 
         <div class="row">
             <p>Цвета</p>
-            Цвет текста
+            Текст
             <input type="text" id="fontcolor" value="#FFFFFF" onchange="change_colors()">
-            Цвет фона (градиент)
+            Сбор (градиент)
             <input type="text" id="backcolor1" value="#ffba52" onchange="change_colors()">
             <input type="text" id="backcolor2" value="#ffa05c" onchange="change_colors()">
         </div>
@@ -49,7 +49,7 @@
         <div class="row">
             <p>Счётчик</p>
 
-            <label for="countstatus">Включить счётчик и автоматически обновлять сбор</label>
+            <label for="countstatus">Включить счётчик заполненных сборов и автоматически обновлять сбор</label>
             <input type="checkbox" id="countstatus" name="countstatus" onchange="change_title()" checked><br><br>
 
             <label for="countvalue">Значение счётчика</label>
@@ -58,10 +58,10 @@
             <label for="countvaluemax">Максимальное значение на счётчике (0 = без ограничения)</label>
             <input type="number" id="countvaluemax" name="countvaluemax" value="0" min="0" onchange="change_title()"><br><br>
 
-            <label for="autoincrease">Автоматически увеличивать цель (число) при успешном сборе</label>
+            <label for="autoincrease">Автоматически увеличивать цель сбора при успешном сборе</label>
             <input type="checkbox" id="autoincrease" name="autoincrease"><br>
 
-            <label for="autosumvalue">Сумма добавления к максимуму: </label>
+            <label for="autosumvalue">Сумма добавления: </label>
             <input type="number" id="autosumvalue" name="autosumvalue" placeholder="0" value="500"><br><br>
         </div>
 
@@ -105,7 +105,6 @@
             donatepay()
         }
         if(datoken&&daid){
-            console.log("1")
             donationalerts()
         }
     

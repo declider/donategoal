@@ -32,7 +32,7 @@ async function startDA() {
     })
     
     centrifugeDA.on('connect', (e) => {
-        let da_clients 
+        let da_clients = 0
         
         centrifugeDA.presenceStats(channel).then(function(resp) {
             da_clients = resp.num_clients

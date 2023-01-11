@@ -56,6 +56,8 @@ body {
     top: 3px;
     transform: translate(-50%, 0%);
     left: 50%;
+    white-space: nowrap;
+    font-size: 44px;
 }
 
 #start {

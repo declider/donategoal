@@ -33,7 +33,9 @@ async function startDA() {
         console.log("Подключен DonationAlerts")
     })
 
-    centrifugeDA.connect()
+    if(!centrifugeDA.isConnected()){
+        centrifugeDA.connect()
+    }
 }
 
 

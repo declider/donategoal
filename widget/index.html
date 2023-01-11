@@ -80,7 +80,8 @@
                 subscribeParams:   {
                     access_token: dptoken
                 },
-                disableWithCredentials: true
+                disableWithCredentials: true,
+                "resubscribe": true
             })
 
         }
@@ -92,7 +93,8 @@
                 subscribeEndpoint: 'https://www.donationalerts.com/api/v1/centrifuge/subscribe',
                 subscribeHeaders: {
                     'Authorization': `Bearer `+datoken
-                }
+                },
+                "resubscribe": true
             })
 
         }

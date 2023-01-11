@@ -31,7 +31,9 @@ async function startDP() {
     })
 
     // Метод фактического подключения к серверу
-    centrifugeDP.connect()
+    if(!centrifugeDP.isConnected()){
+        centrifugeDP.connect()
+    }
 }
 
 

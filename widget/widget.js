@@ -11,7 +11,7 @@ const titleValue = document.getElementById("titlevalue")
 const params = (new URL(document.location)).searchParams
 
 let now = nowValue.valueAsNumber || 0
-let end = endValue.valueAsNumber || 0
+let end = endValue.valueAsNumber || 500
 let count = countValue.valueAsNumber || 0
 
 

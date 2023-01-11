@@ -16,7 +16,7 @@ let count = countValue.valueAsNumber || 0
 
 
 function change_percent() {
-    end = endValue.valueAsNumber
+    end = endValue.valueAsNumber || 500
     let percent = (100 - (now / end * 100)).toFixed(2)
     document.documentElement.style.setProperty('--percent', percent+"%")
     let text = now + " (" + Math.round(100 - percent) + "%)"
@@ -27,20 +27,20 @@ function change_percent() {
 
 function change_now(number) {
     now = number
-    end = endValue.valueAsNumber
+    end = endValue.valueAsNumber || 500
     nowValue.value = now
 
     if(countStatus.checked) {
 
         while(now>=end) {
-            let maxCount = countValueMax.valueAsNumber
+            let maxCount = countValueMax.valueAsNumber || 0
             if(maxCount==0 || count<maxCount){
                 now = parseFloat(Math.abs(end-now).toFixed(2))
                 nowValue.value = now
                 change_count(count+=1)
 
                 if(autoIncrease.checked) {
-                    let addedSum = autoSumValue.valueAsNumber
+                    let addedSum = autoSumValue.valueAsNumber || 0
                     end+=addedSum
                     endValue.value = end
                 }
@@ -63,7 +63,7 @@ function change_count(number) {
 
 
 function change_title() {
-    let title = titleValue.value
+    let title = titleValue.value || ""
 
     if(countStatus.checked) {
         let maxCount = countValueMax.valueAsNumber || 0
@@ -91,7 +91,7 @@ function add_sum(number) {
     change_now(now)
 }
 
-
+// Вот эту херню я перепишу
 function loadStorage() {
     nowValue.value = window.localStorage.getItem("now") || 0
     endValue.value = window.localStorage.getItem("end") || 500
@@ -114,7 +114,7 @@ function loadStorage() {
 }
 loadStorage()
 
-
+// Вот эту херню я перепишу
 function saveStorage() {
     window.localStorage.setItem("now",nowValue.valueAsNumber)
     window.localStorage.setItem("end",endValue.valueAsNumber)

@@ -49,7 +49,7 @@ body {
 #background2 {
     background: linear-gradient(to right, var(--back-color-1), var(--back-color-2));
     clip-path: inset(0px var(--percent) 0px 0px);
-    transition: clip-path 1s;
+    transition: clip-path 2s ease-out;
 }
 
 #title {

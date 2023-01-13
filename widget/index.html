@@ -54,7 +54,7 @@
             <input type="checkbox" id="countstatus" name="countstatus" onchange="change_title()" checked><br><br>
 
             Значение счётчика
-            <input type="number" id="countvalue" name="countvalue" value="0" onchange="change_count(this.valueAsNumber)">
+            <input type="number" id="countvalue" min="0" name="countvalue" value="0" onchange="change_count(this.valueAsNumber)">
             <button onclick="change_count(0)">Обнулить</button><br><br>
 
             Максимальное значение на счётчике (0 = без ограничения)

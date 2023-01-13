@@ -65,17 +65,17 @@ function change_count(number) {
 
 function change_title() {
     let title = titleValue.value || ""
+    document.getElementById("title").firstChild.data = title
 
     if(countStatus.checked) {
         let maxCount = countValueMax.valueAsNumber || 0
         if(maxCount==0) {
-            title += " (" + count+")"
+            title = " ("+count+")"
         } else {
-            title += " ("+count+"/"+maxCount+")"
+            title = " ("+count+"/"+maxCount+")"
         }
+        document.getElementById("titlecount").innerText = title
     }
-
-    document.getElementById("title").innerText = title
 }
 
 
@@ -84,6 +84,7 @@ function change_colors() {
     document.documentElement.style.setProperty('--font-color', document.getElementById("fontcolor").value)
     document.documentElement.style.setProperty('--back-color-1', document.getElementById("backcolor1").value)
     document.documentElement.style.setProperty('--back-color-2', document.getElementById("backcolor2").value)
+    document.documentElement.style.setProperty('--count-color', document.getElementById("countcolor").value)
 }
 
 

@@ -56,6 +56,7 @@ function change_now(number) {
 
 
 function change_count(number) {
+    number = number || 0
     count = number
     countValue.value = count
     change_title()
@@ -68,7 +69,7 @@ function change_title() {
     if(countStatus.checked) {
         let maxCount = countValueMax.valueAsNumber || 0
         if(maxCount==0) {
-            title += " " + count
+            title += " x" + count
         } else {
             title += " ("+count+"/"+maxCount+")"
         }

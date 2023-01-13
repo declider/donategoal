@@ -69,7 +69,7 @@ function change_title() {
     if(countStatus.checked) {
         let maxCount = countValueMax.valueAsNumber || 0
         if(maxCount==0) {
-            title += " x" + count
+            title += " (" + count+")"
         } else {
             title += " ("+count+"/"+maxCount+")"
         }

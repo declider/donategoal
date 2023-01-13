@@ -105,9 +105,10 @@ function loadStorage() {
     autoSumValue.value = window.localStorage.getItem("autoSumValue") || 500
     titleValue.value = window.localStorage.getItem("titleValue") || "Сбор"
 
-    document.getElementById("fontcolor").value = window.localStorage.getItem("fontcolor") || "#FFFFFF"
+    document.getElementById("fontcolor").value  = window.localStorage.getItem("fontcolor")  || "#FFFFFF"
     document.getElementById("backcolor1").value = window.localStorage.getItem("backcolor1") || "#ffba52"
     document.getElementById("backcolor2").value = window.localStorage.getItem("backcolor2") || "#ffa05c"
+    document.getElementById("countcolor").value = window.localStorage.getItem("countcolor") || "#f58807"
 
     change_title()
     change_count(countValue.valueAsNumber)
@@ -130,6 +131,7 @@ function saveStorage() {
     window.localStorage.setItem("fontcolor",document.getElementById("fontcolor").value)
     window.localStorage.setItem("backcolor1",document.getElementById("backcolor1").value)
     window.localStorage.setItem("backcolor2",document.getElementById("backcolor2").value)
+    window.localStorage.setItem('countcolor',document.getElementById("countcolor").value)
 }
 
 

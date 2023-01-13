@@ -81,10 +81,10 @@ function change_title() {
 
 
 function change_colors() {
-    document.documentElement.style.setProperty('--font-color', document.getElementById("fontcolor").value)
-    document.documentElement.style.setProperty('--back-color-1', document.getElementById("backcolor1").value)
-    document.documentElement.style.setProperty('--back-color-2', document.getElementById("backcolor2").value)
-    document.documentElement.style.setProperty('--count-color', document.getElementById("countcolor").value)
+    document.documentElement.style.setProperty('--font-color',   document.getElementById("fontcolor").value  || "#FFFFFF")
+    document.documentElement.style.setProperty('--back-color-1', document.getElementById("backcolor1").value || "#F57507")
+    document.documentElement.style.setProperty('--back-color-2', document.getElementById("backcolor2").value || "#F59C07")
+    document.documentElement.style.setProperty('--count-color',  document.getElementById("countcolor").value || "#f58807")
 }
 
 

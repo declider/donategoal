@@ -50,6 +50,8 @@ function change_now(number) {
             
         }
     }
+    now = parseFloat(Math.abs(now).toFixed(2))
+    nowValue.value = now
     change_percent()
     saveStorage()
 }

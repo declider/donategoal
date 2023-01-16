@@ -13,6 +13,7 @@ async function startDP() {
 
     centrifugeDP.on('error', (e) => {
         console.log("error",e)
+        
         if(!centrifugeDP.isConnected()){
             centrifugeDP.connect()
         }
@@ -20,6 +21,14 @@ async function startDP() {
 
     centrifugeDP.on('disconnect', (e) => {
         console.log("DP отключён!")
+        
+        // После 5-6 часов донатпей "заканчивается" с соответствущим статуслм и не может подключиться обратно (адрес /cengrifuge/refresh)
+        // Хз как это поправить, как минимум потому что хз как это тестить
+        // Так что виджет тупо перезагружается если ошибка возвращает expired
+        if(e.reason=="expired") { 
+            window.location.reload(true)
+        }
+        
         centrifugeDP.connect()
     })
     

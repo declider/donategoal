@@ -12,12 +12,16 @@ let url = new URL("https://declider.github.io/donategoal/widget/")
 let params = (new URL(document.location)).searchParams
 let code = params.get("code") || undefined
 
+let copyBtn = document.getElementById("copy")
+
 if(code!==undefined) {
+    copy.textContent = "Загружаю..."
     auth().then(data => {
         url.searchParams.set("daid", data["id"])
         url.searchParams.set("datoken", data["token"])
         
         document.getElementById("link").value = url.toString()
+        copy.textContent = "Скопировать"
     })
 }
 
@@ -31,7 +35,6 @@ function addDPToken() {
 function copy_link() {
     let link = document.getElementById("link").value
     navigator.clipboard.writeText(link)
-    alert("Ссылка для OBS скопирована!")
-    link = document.getElementById("link").value
     navigator.clipboard.writeText(link)
+    alert("Ссылка для OBS скопирована!")
 }

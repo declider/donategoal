@@ -9,7 +9,7 @@ const autoSumValue = document.getElementById("autosumvalue")
 const titleValue = document.getElementById("titlevalue")
 
 const params = (new URL(document.location)).searchParams
-const wid = params.get("wid") || Math.floor(Math.random() * 100)
+const wid = params.get("wid") || "0"
 const nickname = params.get("nickname") || false
 
 let now = nowValue.valueAsNumber || 0

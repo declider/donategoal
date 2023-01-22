@@ -97,45 +97,50 @@ function add_sum(number) {
     change_now(now)
 }
 
-// Вот эту херню я перепишу
 function loadStorage() {
-    nowValue.value = window.localStorage.getItem("now") || 0
-    endValue.value = window.localStorage.getItem("end") || 500
+    let data = JSON.parse(window.localStorage.getItem("goal"+wid)) || {}
+    console.log(data)
 
-    countValue.value = window.localStorage.getItem("count") || 0
-    countStatus.checked = window.localStorage.getItem("countStatus") || true
-    countValueMax.value = window.localStorage.getItem("maxCount") || 0
-    autoIncrease.checked = window.localStorage.getItem("autoIncrease") || true
-    autoSumValue.value = window.localStorage.getItem("autoSumValue") || 500
-    titleValue.value = window.localStorage.getItem("titleValue") || "Сбор"
+    nowValue.value = data["now"] || 0
+    endValue.value = data["end"] || 500
+    countValue.value = data["count"] || 0
+    countStatus.checked = data["countStatus"] || true
+    countValueMax.value = data["maxCount"] || 0
+    autoIncrease.checked = data["autoIncrease"] || true
+    autoSumValue.value = data["autoSumValue"] || 500
+    titleValue.value = data["titleValue"] || "Сбор"
 
-    document.getElementById("fontcolor").value  = window.localStorage.getItem("fontcolor")  || "#FFFFFF"
-    document.getElementById("backcolor1").value = window.localStorage.getItem("backcolor1") || "#ffba52"
-    document.getElementById("backcolor2").value = window.localStorage.getItem("backcolor2") || "#ffa05c"
-    document.getElementById("countcolor").value = window.localStorage.getItem("countcolor") || "#f58807"
+    document.getElementById("fontcolor").value = data["fontcolor"] || "#FFFFFF"
+    document.getElementById("backcolor1").value = data["backcolor1"] || "#ffba52"
+    document.getElementById("backcolor2").value = data["backcolor2"] || "#ffa05c"
+    document.getElementById("backcolor2").value = data["countcolor"] || "#f58807"
 
     change_title()
     change_count(countValue.valueAsNumber)
     change_now(nowValue.valueAsNumber)
     change_colors()
 }
+
 loadStorage()
 
-// Вот эту херню я перепишу
 function saveStorage() {
-    window.localStorage.setItem("now",nowValue.valueAsNumber)
-    window.localStorage.setItem("end",endValue.valueAsNumber)
-    window.localStorage.setItem("count",countValue.valueAsNumber)
-    window.localStorage.setItem("countStatus",countStatus.checked)
-    window.localStorage.setItem("maxCount",countValueMax.value)
-    window.localStorage.setItem("autoIncrease",autoIncrease.checked)
-    window.localStorage.setItem("autoSumValue",autoSumValue.valueAsNumber)
-    window.localStorage.setItem("titleValue",titleValue.value)
+    let data = JSON.parse(window.localStorage.getItem("goal"+wid)) || {}
 
-    window.localStorage.setItem("fontcolor",document.getElementById("fontcolor").value)
-    window.localStorage.setItem("backcolor1",document.getElementById("backcolor1").value)
-    window.localStorage.setItem("backcolor2",document.getElementById("backcolor2").value)
-    window.localStorage.setItem('countcolor',document.getElementById("countcolor").value)
+    data["now"] = nowValue.valueAsNumber
+    data["end"] = endValue.valueAsNumber
+    data["count"] = countValue.valueAsNumber
+    data["countStatus"] = countStatus.checked
+    data["maxCount"] = countValueMax.value
+    data["autoIncrease"] = autoIncrease.checked
+    data["autoSumValue"] = autoSumValue.valueAsNumber
+    data["titleValue"] = titleValue.value
+
+    data["fontcolor"] = document.getElementById("fontcolor").value
+    data["backcolor1"] = document.getElementById("backcolor1").value
+    data["backcolor2"] = document.getElementById("backcolor2").value
+    data["countcolor"] = document.getElementById("countcolor").value
+
+    window.localStorage.setItem("goal"+wid, JSON.stringify(data))
 }
 
 function clearItem() {

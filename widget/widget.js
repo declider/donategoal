@@ -9,6 +9,8 @@ const autoSumValue = document.getElementById("autosumvalue")
 const titleValue = document.getElementById("titlevalue")
 
 const params = (new URL(document.location)).searchParams
+const wid = params.get("wid") || Math.floor(Math.random() * 100)
+const nickname = params.get("nickname") || false
 
 let now = nowValue.valueAsNumber || 0
 let end = endValue.valueAsNumber || 500
@@ -136,6 +138,10 @@ function saveStorage() {
     window.localStorage.setItem('countcolor',document.getElementById("countcolor").value)
 }
 
+function clearItem() {
+    window.localStorage.removeItem("goal"+wid)
+    loadStorage()
+}
 
 function clearStorage() {
     window.localStorage.clear()

@@ -10,7 +10,7 @@ const titleValue = document.getElementById("titlevalue")
 
 const params = (new URL(document.location)).searchParams
 const wid = params.get("wid") || "0"
-const nickname = params.get("nickname") || false
+const channel = params.get("channel") || false
 
 let now = nowValue.valueAsNumber || 0
 let end = endValue.valueAsNumber || 500

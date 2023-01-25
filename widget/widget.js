@@ -8,6 +8,8 @@ const autoIncrease = document.getElementById("autoincrease")
 const autoSumValue = document.getElementById("autosumvalue")
 const titleValue = document.getElementById("titlevalue")
 
+const chatEnabled = document.getElementById("chatEnabled")
+
 const params = (new URL(document.location)).searchParams
 const wid = params.get("wid") || "0"
 const channel = params.get("channel") || false

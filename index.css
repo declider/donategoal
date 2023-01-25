@@ -55,14 +55,10 @@ input {
     width: 8%;
 }
 
-.auth {
-    background: dimgray;
-    color: black;
-    font-size: 1em;
-    font-family: 'Roboto', sans-serif;
+a {
+    text-decoration: underline;
+    color: rgb(224, 224, 224);
     font-weight: 500;
-    border: none;
-    padding: 4px;
 }
 
 #copy {
@@ -73,9 +69,4 @@ input {
     font-family: 'Roboto', sans-serif;
     border-radius: 0.4vh;
     color: white;
-}
-
-a {
-    text-decoration: none;
-    color: rgb(224, 224, 224);
 }

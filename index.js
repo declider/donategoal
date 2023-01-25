@@ -38,3 +38,9 @@ function copy_link() {
     navigator.clipboard.writeText(link)
     alert("Ссылка для OBS скопирована!")
 }
+
+function addChannel(){
+    let channel = document.getElementById("channel").value
+    url.searchParams.set("channel", channel)
+    link.value = url.toString()
+}

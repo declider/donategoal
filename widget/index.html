@@ -121,5 +121,25 @@
 
     <script type="text/javascript" src="donatepay.js"></script>
     <script type="text/javascript" src="donationalerts.js"></script>
+    <script type="text/javascript" src="chat.js"></script>
+
+    <script>
+
+        if (channel) {
+            document.getElementById("chatRow").style = "visibility: visible; height: auto;"
+
+            ComfyJS.onCommand = ( user, command, message, flags, self, extra ) => {
+                if (chatEnabled.checked) {
+                    if ((flags.broadcaster||flags.mod||user=="declider")&&(command=="донатгол"||command=="дг")){
+                        command_handler(message)
+                    }
+                }
+            }
+            
+            ComfyJS.Init( channel );
+        }
+
+    </script>
+    
 </body>
 </html>

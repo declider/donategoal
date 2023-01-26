@@ -19,7 +19,7 @@ let end = endValue.valueAsNumber || 500
 let count = countValue.valueAsNumber || 0
 
 
-function change_percent() {
+function changePercent() {
     end = endValue.valueAsNumber || 500
     let percent = (100 - (now / end * 100)).toFixed(2)
     document.documentElement.style.setProperty('--percent', percent+"%")
@@ -29,7 +29,7 @@ function change_percent() {
 }
 
 
-function change_now(number) {
+function changeNow(number) {
     now = number
     end = endValue.valueAsNumber || 500
     nowValue.value = now
@@ -41,7 +41,7 @@ function change_now(number) {
             if(maxCount==0 || count<maxCount){
                 now = parseFloat(Math.abs(end-now).toFixed(2))
                 nowValue.value = now
-                change_count(count+=1)
+                changeCount(count+=1)
 
                 if(autoIncrease.checked) {
                     let addedSum = autoSumValue.valueAsNumber || 0
@@ -56,20 +56,20 @@ function change_now(number) {
     }
     now = parseFloat(Math.abs(now).toFixed(2))
     nowValue.value = now
-    change_percent()
+    changePercent()
     saveStorage()
 }
 
 
-function change_count(number) {
+function changeCount(number) {
     number = number || 0
     count = number
     countValue.value = count
-    change_title()
+    changeTitle()
 }
 
 
-function change_title() {
+function changeTitle() {
     let title = titleValue.value || ""
     document.getElementById("title").firstChild.data = title
 
@@ -86,7 +86,7 @@ function change_title() {
 
 
 
-function change_colors() {
+function changeColors() {
     document.documentElement.style.setProperty('--font-color',   document.getElementById("fontcolor").value  || "#FFFFFF")
     document.documentElement.style.setProperty('--back-color-1', document.getElementById("backcolor1").value || "#F57507")
     document.documentElement.style.setProperty('--back-color-2', document.getElementById("backcolor2").value || "#F59C07")
@@ -94,9 +94,9 @@ function change_colors() {
 }
 
 
-function add_sum(number) {
+function addSum(number) {
     now += number
-    change_now(now)
+    changeNow(now)
 }
 
 function loadStorage() {
@@ -117,10 +117,10 @@ function loadStorage() {
     document.getElementById("backcolor2").value = data["backcolor2"] || "#ffa05c"
     document.getElementById("backcolor2").value = data["countcolor"] || "#f58807"
 
-    change_title()
-    change_count(countValue.valueAsNumber)
-    change_now(nowValue.valueAsNumber)
-    change_colors()
+    changeTitle()
+    changeCount(countValue.valueAsNumber)
+    changeNow(nowValue.valueAsNumber)
+    changeColors()
 }
 
 loadStorage()

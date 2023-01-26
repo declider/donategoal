@@ -1,5 +1,4 @@
-function command_handler(message) {
-    console.log("Сообщение "+message)
+function commandHandler(message) {
     let args = message.split(" ")
 
     let error = args.indexOf("")
@@ -8,32 +7,30 @@ function command_handler(message) {
     }
 
     args.length = 2
-    console.log(args)
 
     if(args.length>=2) {
         let target = args[0].toLowerCase().trim()
         let value = args[1].trim()
 
         if(isNaN(value)) {
-            console.log("Не число")
             return
         }
 
         switch (target) {
             case "счётчик":
             case "счетчик":
-                count = do_math(count, value)
-                change_count(count)
+                count = doMath(count, value)
+                changeCount(count)
                 break
             case "цель":
                 end = endValue.valueAsNumber
-                end = do_math(end, value)
+                end = doMath(end, value)
                 endValue.value = end
-                change_percent()
+                changePercent()
                 break
             case "сумма":
-                now = do_math(now, value)
-                change_now(now)
+                now = doMath(now, value)
+                changeNow(now)
                 break
             default:
                 console.log("Неверное использование команды в чате.")
@@ -43,7 +40,7 @@ function command_handler(message) {
     }
 }
 
-function do_math(old, value){
+function doMath(old, value){
     let sum = Math.abs(parseFloat(value))
 
     switch (value.charAt(0)) {

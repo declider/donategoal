@@ -28,7 +28,7 @@ async function startDA() {
     centrifugeDA.subscribe(channel, message => {
         let sum = message.data.amount_in_user_currency
         console.log(message)
-        add_sum(sum)
+        addSum(sum)
     })
   
     centrifugeDA.on('connect', (e) => { 

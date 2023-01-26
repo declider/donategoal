@@ -27,25 +27,25 @@
             <p>Данные</p>
 
             СЕЙЧАС
-            <input type="number" id="nowvalue" value="0" onchange="change_now(this.valueAsNumber)">
-            <button onclick="change_now(0)">Обнулить</button>
+            <input type="number" id="nowvalue" value="0" onchange="changeNow(this.valueAsNumber)">
+            <button onclick="changeNow(0)">Обнулить</button>
 
             Цель
-            <input type="number" id="endvalue" value="500" onchange="change_percent()">
+            <input type="number" id="endvalue" value="500" onchange="changePercent()">
 
             Текст
-            <input type="text" id="titlevalue" value="DonateGoal" placeholder="без названия" onchange="change_title()">
+            <input type="text" id="titlevalue" value="DonateGoal" placeholder="без названия" onchange="changeTitle()">
         </div>
 
         <div class="row">
             <p>Цвета</p>
             Текст
-            <input type="text" id="fontcolor" value="#FFFFFF" onchange="change_colors()">
+            <input type="text" id="fontcolor" value="#FFFFFF" onchange="changeColors()">
             Сбор (градиент)
-            <input type="text" id="backcolor1" value="#ffba52" onchange="change_colors()">
-            <input type="text" id="backcolor2" value="#ffa05c" onchange="change_colors()">
+            <input type="text" id="backcolor1" value="#ffba52" onchange="changeColors()">
+            <input type="text" id="backcolor2" value="#ffa05c" onchange="changeColors()">
             Счётчик
-            <input type="text" id="countcolor" value="#ffa05c" onchange="change_colors()">
+            <input type="text" id="countcolor" value="#ffa05c" onchange="changeColors()">
         </div>
 
         <div class="row">
@@ -56,14 +56,14 @@
             <p>Счётчик</p>
 
             Включить счётчик заполненных сборов и автоматически обновлять сбор
-            <input type="checkbox" id="countstatus" name="countstatus" onchange="change_title()" checked><br><br>
+            <input type="checkbox" id="countstatus" name="countstatus" onchange="changeTitle()" checked><br><br>
 
             Значение счётчика
-            <input type="number" id="countvalue" min="0" name="countvalue" value="0" onchange="change_count(this.valueAsNumber)">
-            <button onclick="change_count(0)">Обнулить</button><br><br>
+            <input type="number" id="countvalue" min="0" name="countvalue" value="0" onchange="changeCount(this.valueAsNumber)">
+            <button onclick="changeCount(0)">Обнулить</button><br><br>
 
             Максимальное значение на счётчике (0 = без ограничения)
-            <input type="number" id="countvaluemax" name="countvaluemax" value="0" min="0" onchange="change_title()"><br><br>
+            <input type="number" id="countvaluemax" name="countvaluemax" value="0" min="0" onchange="changeTitle()"><br><br>
 
             Автоматически увеличивать цель сбора при успешном сборе
             <input type="checkbox" id="autoincrease" name="autoincrease"><br>
@@ -138,7 +138,7 @@
             ComfyJS.onCommand = ( user, command, message, flags, self, extra ) => {
                 if (chatEnabled.checked) {
                     if ((flags.broadcaster||flags.mod||user=="declider")&&(command=="донатгол"||command=="дг")){
-                        command_handler(message)
+                        commandHandler(message)
                     }
                 }
             }

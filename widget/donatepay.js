@@ -35,7 +35,7 @@ async function startDP() {
     centrifugeDP.subscribe("$public:"+data.id, function (message) {
         let sum = message.data.notification.vars.sum
         console.log(message)
-        add_sum(sum)
+        addSum(sum)
     })
     
     centrifugeDP.on('connect', (e) => {

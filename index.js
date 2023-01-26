@@ -32,7 +32,7 @@ function addDPToken() {
     document.getElementById("link").value = url.toString()
 }
 
-function copy_link() {
+function copyLink() {
     let link = document.getElementById("link").value
     navigator.clipboard.writeText(link)
     navigator.clipboard.writeText(link)

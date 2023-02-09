@@ -6,7 +6,7 @@ function commandHandler(message) {
         args.splice(error, 1)
     }
 
-    args.length = 2
+    args.length = 2 // что за херь я тут написал. потом поправлю
 
     if(args.length>=2) {
         let target = args[0].toLowerCase().trim()

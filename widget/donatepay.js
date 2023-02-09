@@ -8,7 +8,6 @@ async function getDPData() {
 
 async function startDP() {
     let data = await getDPData()
-    let channel = "$public:"+dpid
     centrifugeDP.setToken(data.token)
 
     centrifugeDP.on('error', (e) => {
@@ -32,7 +31,7 @@ async function startDP() {
         centrifugeDP.connect()
     })
     
-    centrifugeDP.subscribe("$public:"+data.id, function (message) {
+    centrifugeDP.subscribe("$public:"+dpid, function (message) {
         let sum = message.data.notification.vars.sum
         console.log(message)
         addSum(sum)

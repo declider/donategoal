@@ -116,8 +116,9 @@
         const dptoken = params.get("dptoken") || false
         const datoken = params.get("datoken") || false
         const daid = params.get("daid") || false
+        const dpid = params.get("dpid") || false
 
-        if(dptoken){
+        if(dptoken&&dpid){
             donatepay()
         }
         if(datoken&&daid){

@@ -1,5 +1,5 @@
 async function getDPData() {
-    let res = await fetch('https://donategoalforhuman.deta.dev/dp?apikey='+dptoken, {
+    let res = await fetch('https://donategoalforhuman.deta.dev/dp?apikey='+dptoken+"&id="+dpid, {
         method: 'get'
     })
     return await res.json()
@@ -8,7 +8,7 @@ async function getDPData() {
 
 async function startDP() {
     let data = await getDPData()
-    let channel = "$public:"+data.id
+    let channel = "$public:"+dpid
     centrifugeDP.setToken(data.token)
 
     centrifugeDP.on('error', (e) => {

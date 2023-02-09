@@ -2,7 +2,7 @@
 
 Ссылка: https://declider.github.io/donategoal
 
-Команды для модераторов *Тестируется*: https://github.com/declider/donategoal/blob/main/commands.md
+Команды для модераторов *(Тестируется)*: https://github.com/declider/donategoal/blob/main/commands.md
 
 Как запустить несколько виджетов одновременно и какие ошибки могут быть: https://github.com/declider/donategoal/blob/main/wid.md
 

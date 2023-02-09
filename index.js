@@ -32,6 +32,15 @@ function addDPToken() {
     document.getElementById("link").value = url.toString()
 }
 
+
+function addDPid() {
+    let dpid = document.getElementById("dpid").value
+    url.searchParams.set("dpid", dpid)
+
+    document.getElementById("link").value = url.toString()
+}
+
+
 function copyLink() {
     let link = document.getElementById("link").value
     navigator.clipboard.writeText(link)

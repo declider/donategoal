@@ -1,5 +1,5 @@
 async function getDPData() {
-    let res = await fetch('https://donategoalforhuman.deta.dev/dp?apikey='+dptoken+"&id="+dpid, {
+    let res = await fetch('https://donategoalforhuman.deta.dev/dp?apikey='+dptoken, {
         method: 'get'
     })
     return await res.json()

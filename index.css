@@ -51,7 +51,7 @@ input {
     width: 34%;
 }
 
-#dptoken {
+#dptoken, #dpid {
     width: 8%;
 }
 

@@ -8,8 +8,6 @@ const autoIncrease = document.getElementById("autoincrease")
 const autoSumValue = document.getElementById("autosumvalue")
 const titleValue = document.getElementById("titlevalue")
 
-const chatEnabled = document.getElementById("chatEnabled")
-
 const params = (new URL(document.location)).searchParams
 const wid = params.get("wid") || "0"
 const channel = params.get("channel") || false
@@ -17,7 +15,6 @@ const channel = params.get("channel") || false
 let now = nowValue.valueAsNumber || 0
 let end = endValue.valueAsNumber || 500
 let count = countValue.valueAsNumber || 0
-
 
 function changePercent() {
     end = endValue.valueAsNumber || 500
@@ -154,19 +151,6 @@ function clearStorage() {
     window.localStorage.clear()
     loadStorage()
 }
-
-
-// window.addEventListener('offline', (event) => {
-//     console.log("Интернет кончился!")
-//     if( dptoken && centrifugeDP.isConnected() ){
-//         centrifugeDP.disconnect()
-//     }
-
-//     if( datoken && daid && centrifugeDA.isConnected() ){
-//         centrifugeDA.disconnect()
-//     }
-// })
-
 
 window.addEventListener('online', (event) => {
     window.location.reload(true)

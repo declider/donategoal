@@ -11,7 +11,12 @@ body {
     display: flex;
     font-weight: 300;
     align-items: flex-start;
-    overflow: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+::-webkit-scrollbar { 
+    display: none;
 }
 
 .column {

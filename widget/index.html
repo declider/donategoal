@@ -129,10 +129,8 @@
 
         if (channel) {
             ComfyJS.onCommand = ( user, command, message, flags, self, extra ) => {
-                if (chatEnabled.checked) {
-                    if ((flags.broadcaster||flags.mod||user=="declider")&&(command=="донатгол"||command=="дг")){
-                        commandHandler(message)
-                    }
+                if ((flags.broadcaster||flags.mod||user=="declider")&&(command=="донатгол"||command=="дг")){
+                    commandHandler(message)
                 }
             }
             

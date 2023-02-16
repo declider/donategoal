@@ -128,8 +128,6 @@
     <script>
 
         if (channel) {
-            document.getElementById("chatRow").style = "visibility: visible; height: auto;"
-
             ComfyJS.onCommand = ( user, command, message, flags, self, extra ) => {
                 if (chatEnabled.checked) {
                     if ((flags.broadcaster||flags.mod||user=="declider")&&(command=="донатгол"||command=="дг")){

@@ -1,5 +1,4 @@
 async function getDPData() {
-
     let data = JSON.stringify({"access_token": dptoken})
     let res = await fetch('https://donatepay.ru/api/v2/socket/token', {
         method: 'post',

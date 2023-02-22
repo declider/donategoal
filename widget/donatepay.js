@@ -1,14 +1,22 @@
 async function getDPData() {
-    let res = await fetch('https://donategoalforhuman.deta.dev/dp?apikey='+dptoken, {
-        method: 'get'
+
+    let data = JSON.stringify({"access_token": dptoken})
+    let res = await fetch('https://donatepay.ru/api/v2/socket/token', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: data
     })
-    return await res.json()
+
+    let token = await res.json()
+    return token.token
 }
 
 
 async function startDP() {
-    let data = await getDPData()
-    centrifugeDP.setToken(data.token)
+    let token = await getDPData()
+    centrifugeDP.setToken(token)
 
     centrifugeDP.on('error', (e) => {
         console.log("error",e)

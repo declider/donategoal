@@ -11,6 +11,7 @@ const titleValue = document.getElementById("titlevalue")
 const params = (new URL(document.location)).searchParams
 const wid = params.get("wid") || "0"
 const channel = params.get("channel") || false
+const version = params.get("v") || "1"
 
 let now = nowValue.valueAsNumber || 0
 let end = endValue.valueAsNumber || 500

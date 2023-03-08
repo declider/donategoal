@@ -54,7 +54,7 @@ body {
 }
 
 #title {
-    top: 2px;
+    top: -2px;
     transform: translate(-50%, 0%);
     left: 50%;
     white-space: nowrap;

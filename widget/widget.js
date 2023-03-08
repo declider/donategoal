@@ -104,9 +104,9 @@ function loadStorage() {
     nowValue.value = data["now"] || 0
     endValue.value = data["end"] || 500
     countValue.value = data["count"] || 0
-    countStatus.checked = data["countStatus"] || true
+    countStatus.checked = data["countStatus"] || false
     countValueMax.value = data["maxCount"] || 0
-    autoIncrease.checked = data["autoIncrease"] || true
+    autoIncrease.checked = data["autoIncrease"] || false
     autoSumValue.value = data["autoSumValue"] || 500
     titleValue.value = data["titleValue"] || "Сбор"
 

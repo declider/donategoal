@@ -160,7 +160,7 @@ function saveStorage() {
     data["autoIncrease"] = autoIncrease.checked
     data["autoSumValue"] = autoSumValue.valueAsNumber
     data["titleValue"] = titleValue.value
-    data["customGoalsStatus"] = customGoalsStatus.value
+    data["customGoalsStatus"] = customGoalsStatus.checked
     data["customGoalsValue"] = customGoalsValue.value
     data["customGoals"] = customGoals
 

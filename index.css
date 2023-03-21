@@ -63,7 +63,6 @@ input {
 a {
     text-decoration: underline;
     color: rgb(224, 224, 224);
-    font-weight: 500;
 }
 
 #copy {
@@ -74,4 +73,36 @@ a {
     font-family: 'Roboto', sans-serif;
     border-radius: 0.4vh;
     color: white;
+}
+
+#count-info, #mods-info {
+    position: absolute;
+    top: 10vh;
+    left: 10vw;
+    height: 80vh;
+    width: 80vw;
+    background-color: #0e0e0eea;
+    border-radius: 1vw;
+    display: flex;
+    text-align: left;
+    align-items: center;
+    justify-content: center;
+    word-wrap: normal;
+    box-sizing: border-box;
+    padding: 3vw;
+    flex-direction: column;
+    visibility: hidden;
+    font-size: 1vw;
+    line-height: 1.5vw;
+}
+
+.code {
+    background-color: #343434;
+    white-space:nowrap;
+    border-radius: 0.1vw;
+}
+
+.info-link {
+    text-decoration: underline;
+    cursor: pointer;
 }

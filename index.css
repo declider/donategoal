@@ -75,7 +75,7 @@ a {
     color: white;
 }
 
-#count-info, #mods-info {
+#count-info, #mods-info, #wid-info {
     position: absolute;
     top: 10vh;
     left: 10vw;

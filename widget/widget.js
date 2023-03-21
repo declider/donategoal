@@ -8,14 +8,20 @@ const autoIncrease = document.getElementById("autoincrease")
 const autoSumValue = document.getElementById("autosumvalue")
 const titleValue = document.getElementById("titlevalue")
 
+const customGoalsStatus = document.getElementById("customgoalsstatus")
+const customGoalsValue = document.getElementById("customgoalsvalue")
+
 const params = (new URL(document.location)).searchParams
 const wid = params.get("wid") || "0"
 const channel = params.get("channel") || false
 const version = params.get("v") || "1"
 
+let customGoals = []
+
 let now = nowValue.valueAsNumber || 0
 let end = endValue.valueAsNumber || 500
 let count = countValue.valueAsNumber || 0
+
 
 function changePercent() {
     end = endValue.valueAsNumber || 500
@@ -44,6 +50,9 @@ function changeNow(number) {
                 if(autoIncrease.checked) {
                     let addedSum = autoSumValue.valueAsNumber || 0
                     end+=addedSum
+                    endValue.value = end
+                } else if (customGoalsStatus.checked && customGoals.length) {
+                    end = customGoals.shift()
                     endValue.value = end
                 }
             } else {
@@ -97,6 +106,20 @@ function addSum(number) {
     changeNow(now)
 }
 
+
+function change_goals(){
+    customGoals = []
+    let value = customGoalsValue.value
+    if(!value){return}
+    value = value.replaceAll(" ","").split(",")
+    let status = value.every(element => {return Number(element)})
+    if(!status){return}
+    value.forEach(element => {
+        customGoals.push(Number(element))
+    })
+}
+
+
 function loadStorage() {
     let data = JSON.parse(window.localStorage.getItem("goal"+wid)) || {}
     console.log(data)
@@ -109,6 +132,9 @@ function loadStorage() {
     autoIncrease.checked = data["autoIncrease"] || false
     autoSumValue.value = data["autoSumValue"] || 500
     titleValue.value = data["titleValue"] || "Сбор"
+    customGoalsStatus.checked = data["customGoalsStatus"] || false
+    customGoalsValue.value = data["customGoalsValue"] || ""
+    customGoals = data["customGoals"] || []
 
     document.getElementById("fontcolor").value = data["fontcolor"] || "#FFFFFF"
     document.getElementById("backcolor1").value = data["backcolor1"] || "#ffba52"
@@ -134,6 +160,9 @@ function saveStorage() {
     data["autoIncrease"] = autoIncrease.checked
     data["autoSumValue"] = autoSumValue.valueAsNumber
     data["titleValue"] = titleValue.value
+    data["customGoalsStatus"] = customGoalsStatus.value
+    data["customGoalsValue"] = customGoalsValue.value
+    data["customGoals"] = customGoals
 
     data["fontcolor"] = document.getElementById("fontcolor").value
     data["backcolor1"] = document.getElementById("backcolor1").value

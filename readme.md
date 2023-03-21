@@ -4,10 +4,6 @@
 
 Ссылка: https://declider.github.io/donategoal
 
-Команды для модераторов: https://github.com/declider/donategoal/blob/main/commands.md
-
-Как запустить несколько виджетов одновременно: https://github.com/declider/donategoal/blob/main/wid.md
-
 ---
 
 Почему функции вроде "автоувеличение цели" работают только при включённом счётчике, что за духота?:

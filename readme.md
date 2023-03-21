@@ -1,7 +1,5 @@
 # Кастомный донатгол.
 
---- 
-
 Ссылка: https://declider.github.io/donategoal
 
 ---

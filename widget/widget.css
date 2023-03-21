@@ -102,7 +102,7 @@ input[type="text"]{
     width: 60px;
 }
 
-#titlevalue {
+#titlevalue, #customgoalsvalue {
     width: 140px;
 }
 

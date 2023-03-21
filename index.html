@@ -94,6 +94,20 @@
         </p>
         <button onclick="closeInfo('mods-info')">Закрыть</button>
     </div>
+    
+    <div id="wid-info">
+        <p>
+            Два запущенных виджета будут считаться как две "копии" одного, то есть и данные будут записываться в одно место,
+            поэтому при их перезапуске (перезапуске обс, например) будут загружаться идентичные данные.<br>
+            Чтобы это предотвратить можно добавлять в ссылке на виджет <span class="code">&wid=0</span> 
+            где вместо нуля указать номер виджета, например:<br>
+            <span class="code">declider.github.io/donategoal/widget/?daid=xxx&datoken=xxx&wid=1</span> для одного виджета, и 
+            <span class="code">declider.github.io/donategoal/widget/?daid=xxx&datoken=xxx&wid=2</span> для второго виджета, 
+            так их данные будут загружаться отдельно и можно в любой момент загрузить нужный виджет.<br><br>
+            <span class="code">ВАЖНО</span> Даже так донаты будут засчитываться во ВСЕ донатголы.
+        </p>
+        <button onclick="closeInfo('wid-info')">Закрыть</button>
+    </div>
 
     <div style="position: absolute; left: 1%; bottom: 1%;">
         <a href="https://github.com/declider/donategoal">GitHub (известные баги/планы/код)</a>

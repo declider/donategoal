@@ -53,3 +53,12 @@ function addChannel(){
     url.searchParams.set("channel", channel)
     link.value = url.toString()
 }
+
+
+function openInfo(el){
+    document.getElementById(el).style.visibility = "visible"
+}
+
+function closeInfo(el){
+    document.getElementById(el).style.visibility = "hidden"
+}

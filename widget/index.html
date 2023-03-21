@@ -71,6 +71,11 @@
 
             Сумма добавления:
             <input type="number" id="autosumvalue" name="autosumvalue" placeholder="0" value="500"><br><br>
+            
+            Свой список следующих целей (тестируется)
+            <input type="checkbox" id="customgoalsstatus"><br>
+            <input type="text" id="customgoalsvalue" onchange="change_goals()" placeholder="числа через запятую">
+            <button onclick="change_goals()">Обновить</button>
         </div>
 
         <div class="row">

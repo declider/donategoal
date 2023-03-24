@@ -34,7 +34,11 @@ function commandHandler(message) {
                 changeNow(now)
                 break
             case "цели":
-                customGoalsValue.value = value
+                if(value=="-"){
+                    customGoalsValue.value = ""
+                } else {
+                    customGoalsValue.value = value
+                }
                 changeGoals()
                 break
             default:

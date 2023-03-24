@@ -26,7 +26,7 @@ function commandHandler(message) {
                 end = doMath(end, value)
                 endValue.value = end
                 customGoals = []
-                customGoalsValue = ""
+                customGoalsValue.value = ""
                 changePercent()
                 break
             case "сумма":

@@ -6,8 +6,6 @@ function commandHandler(message) {
         args.splice(error, 1)
     }
 
-    args.length = 2 // что за херь я тут написал. потом поправлю
-
     if(args.length>=2) {
         let target = args[0].toLowerCase().trim()
         let value = args[1].trim()
@@ -33,6 +31,10 @@ function commandHandler(message) {
             case "сумма":
                 now = doMath(now, value)
                 changeNow(now)
+                break
+            case "цели":
+                customGoalsValue.value = value
+                changeGoals()
                 break
             default:
                 console.log("Неверное использование команды в чате.")

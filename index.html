@@ -80,18 +80,23 @@
     <div id="mods-info">
         <p>
             Можно использовать либо <span class="code">!дг</span> либо <span class="code">!донатгол</span><br>
-            Для изменения доступны <span class="code">счётчик</span>, <span class="code">сумма</span>, <span class="code">цель</span>
-            через <span class="code">!дг счётчик</span>, <span class="code">!дг сумма</span>, <span class="code">!дг цель</span><br>
+            Для изменения доступны <span class="code">счётчик</span>, <span class="code">сумма</span>, <span class="code">цель</span> <span class="code">следующие цели</span>
+            через <span class="code">!дг счётчик</span>, <span class="code">!дг сумма</span>, <span class="code">!дг цель</span><br>, <span class="code">!дг цели</span><br>
             Значения можно увеличивать через <span class="code">+число</span>: <span class="code">!дг сумма +500</span><br>
             Уменьшать через <span class="code">-число</span> <span class="code">!дг цель -200</span><br>
             Или выставлять точные значения через число <span class="code">!дг счётчик 5</span><br><br>
             Например:<br>
             <span class="code">!дг сумма 500</span> устанавливает текущую сумму в 500 рублей<br>
             <span class="code">!дг сумма +200</span> увеличивает текущую сумму на 200 рублей<br>
-            <span class="code">!дг цель -200</span> уменьшает цель сбора на 200 рублей<br>
-            <span class="code">!дг цель 5000</span> устанавливает текущую цель сбора в 5000 рублей<br>
+            <span class="code">!дг цель -200</span> уменьшает цель сбора на 200 рублей (убирает следующие цели сбора)<br>
+            <span class="code">!дг цель 5000</span> устанавливает текущую цель сбора в 5000 рублей (убирает следующие цели сбора)<br>
             <span class="code">!дг счётчик 0</span> обнуляет счётчик<br>
-            <span class="code">!дг счётчик +1</span> увеличивает текущий счётчик на 1<br>
+            <span class="code">!дг счётчик +1</span> увеличивает текущий счётчик на 1<br><br>
+            
+            Команда <span class="code">!дг цели</span><br> работает немного иначе и принимает исключительно список чисел через запятую и без пробелов.<br>
+            Например:<br>
+            <span class="code">!дг цели 300,600,1000,1500</span> устанавливает следующие суммы в 300,600,1000,1500 рублей<br>
+            
         </p>
         <button onclick="closeInfo('mods-info')">Закрыть</button>
     </div>

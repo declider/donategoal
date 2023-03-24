@@ -10,7 +10,8 @@ function commandHandler(message) {
         let target = args[0].toLowerCase().trim()
         let value = args[1].trim()
 
-        if(isNaN(value)) {
+        if(isNaN(value) && target!="цели") {
+            console.log("Не число")
             return
         }
 

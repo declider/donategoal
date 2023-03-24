@@ -107,7 +107,7 @@ function addSum(number) {
 }
 
 
-function change_goals(){
+function changeGoals(){
     customGoals = []
     let value = customGoalsValue.value
     if(!value){return}

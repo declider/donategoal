@@ -54,6 +54,7 @@ function changeNow(number) {
                 } else if (customGoalsStatus.checked && customGoals.length) {
                     end = customGoals.shift()
                     endValue.value = end
+                    customGoalsValue.value = customGoals.join(",")
                 }
             } else {
                 break

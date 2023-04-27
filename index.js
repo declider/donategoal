@@ -1,6 +1,6 @@
 async function auth() {
     
-    let res = await fetch('https://donategoalforhuman.deta.dev/da?code='+code, {
+    let res = await fetch('https://donategoal-1-y7341314.deta.app/da?code='+code, {
         method: "get"
     })
     return await res.json()

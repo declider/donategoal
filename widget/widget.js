@@ -7,6 +7,7 @@ const countValueMax = document.getElementById("countvaluemax")
 const autoIncrease = document.getElementById("autoincrease")
 const autoSumValue = document.getElementById("autosumvalue")
 const titleValue = document.getElementById("titlevalue")
+const maxGoalValue = document.getElementById("maxgoalvalue")
 
 const customGoalsStatus = document.getElementById("customgoalsstatus")
 const customGoalsValue = document.getElementById("customgoalsvalue")
@@ -48,9 +49,14 @@ function changeNow(number) {
                 changeCount(count+=1)
 
                 if(autoIncrease.checked) {
-                    let addedSum = autoSumValue.valueAsNumber || 0
-                    end+=addedSum
-                    endValue.value = end
+                    let maxGoal = maxGoalValue.valueAsNumber || 0
+                    if(!maxGoal) {
+                        let addedSum = autoSumValue.valueAsNumber || 0
+                        end+=addedSum
+                        endValue.value = end
+                    } else {
+                        endValue.value = maxGoal
+                    }
                 } else if (customGoalsStatus.checked && customGoals.length) {
                     end = customGoals.shift()
                     endValue.value = end
@@ -133,6 +139,7 @@ function loadStorage() {
     autoIncrease.checked = data["autoIncrease"] || false
     autoSumValue.value = data["autoSumValue"] || 500
     titleValue.value = data["titleValue"] || "Сбор"
+    maxGoalValue.value = data["maxGoalValue"] || undefined
     customGoalsStatus.checked = data["customGoalsStatus"] || false
     customGoalsValue.value = data["customGoalsValue"] || ""
     customGoals = data["customGoals"] || []
@@ -161,6 +168,7 @@ function saveStorage() {
     data["autoIncrease"] = autoIncrease.checked
     data["autoSumValue"] = autoSumValue.valueAsNumber
     data["titleValue"] = titleValue.value
+    data["maxGoalValue"] = maxGoalValue.value
     data["customGoalsStatus"] = customGoalsStatus.checked
     data["customGoalsValue"] = customGoalsValue.value
     data["customGoals"] = customGoals

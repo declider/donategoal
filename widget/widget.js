@@ -50,13 +50,20 @@ function changeNow(number) {
 
                 if(autoIncrease.checked) {
                     let maxGoal = maxGoalValue.valueAsNumber || 0
-                    if(!maxGoal) {
-                        let addedSum = autoSumValue.valueAsNumber || 0
-                        end+=addedSum
-                        endValue.value = end
-                    } else {
-                        endValue.value = maxGoal
+                    let addedSum = autoSumValue.valueAsNumber || 0
+                    end+=addedSum
+                    
+                    if(maxGoal) {
+                        if(end>maxGoal) {
+                            end=maxGoal
+                            if(end>now) {
+                                break
+                            }
+                        }
                     }
+
+                    endValue.value = end
+                    
                 } else if (customGoalsStatus.checked && customGoals.length) {
                     end = customGoals.shift()
                     endValue.value = end

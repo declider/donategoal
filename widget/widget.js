@@ -87,6 +87,7 @@ function changeCount(number) {
     count = number
     countValue.value = count
     changeTitle()
+    saveStorage()
 }
 
 
@@ -103,6 +104,7 @@ function changeTitle() {
         }
         document.getElementById("titlecount").innerText = title
     }
+    saveStorage()
 }
 
 

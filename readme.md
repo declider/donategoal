@@ -47,6 +47,6 @@ P.S. коммитов много, ибо решил прям тут тестит
 ---
 
 ##### Использовано
-ComfyJS - https://github.com/instafluff/ComfyJS
-Centrifugo - https://www.npmjs.com/package/centrifuge
-Roboto - https://fonts.google.com/specimen/Roboto
+ComfyJS - https://github.com/instafluff/ComfyJS  
+Centrifugo - https://www.npmjs.com/package/centrifuge  
+Roboto - https://fonts.google.com/specimen/Roboto  

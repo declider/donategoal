@@ -10,7 +10,7 @@
 
 ---
 
-Доделать:
+##### Доделать:
 - [x] Добавить интеграцию с Twitch чатом для управления модераторами
 - [x] Добавить модерские команды на главную страницу
 - [x] ~~Добавить настройки для расположения текста~~ Просто центрировать его
@@ -43,3 +43,10 @@
   - [ ] DonationAlerts
 
 P.S. коммитов много, ибо решил прям тут тестить, иначе лень
+
+---
+
+##### Использовано
+ComfyJS - https://github.com/instafluff/ComfyJS
+Centrifugo - https://www.npmjs.com/package/centrifuge
+Roboto - https://fonts.google.com/specimen/Roboto

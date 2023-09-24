@@ -1,10 +1,10 @@
 function commandHandler(message) {
-    let args = message.split(" ")
+    let args = message.replace("  "," ").replace(/[\uD800-\uDFFF]/gi, []).trim().split(" ")
 
-    let error = args.indexOf("")
-    if (error > -1) {
-        args.splice(error, 1)
-    }
+    // let error = args.indexOf("")
+    // if (error > -1) {
+    //     args.splice(error, 1)
+    // }
 
     if(args.length>=2) {
         let target = args[0].toLowerCase().trim()

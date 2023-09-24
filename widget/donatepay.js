@@ -17,13 +17,14 @@ async function startDP() {
     let token = await getDPData()
     centrifugeDP.setToken(token)
 
-    centrifugeDP.on('error', (e) => {
-        console.log("error",e)
+    // centrifugeDP.on('error', (e) => {
+    //     console.log("error",e)
         
-        if(!centrifugeDP.isConnected()){
-            centrifugeDP.connect()
-        }
-    })
+    //     if(!centrifugeDP.isConnected()){
+    //         centrifugeDP.connect()
+    //     }
+    // })
+    // TEST
 
     centrifugeDP.on('disconnect', (e) => {
         console.log("DP отключён!")

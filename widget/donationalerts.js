@@ -13,12 +13,13 @@ async function startDA() {
     let channel = '$alerts:donation_'+daid
     centrifugeDA.setToken(await getDAData())
 
-    centrifugeDA.on('error', (e) => {
-        console.log("error",e)
-        if(!centrifugeDA.isConnected()){
-            centrifugeDA.connect()
-        }
-    })
+    // centrifugeDA.on('error', (e) => {
+    //     console.log("error",e)
+    //     if(!centrifugeDA.isConnected()){
+    //         centrifugeDA.connect()
+    //     }
+    // }) 
+    // TEST
 
     centrifugeDA.on('disconnect', (e) => {
         console.log("DA отключён!")

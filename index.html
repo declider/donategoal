@@ -1,253 +1,237 @@
-window.location.hash = window.location.hash ? window.location.hash : "home"
-
-
-// #region Кастомизация
-const fonts = [
-	'Roboto Slab:100,200,300,400,500,600,700,800,900',
-	'Montserrat:100,200,300,400,500,600,700,800,900',
-	'Inter:100,200,300,400,500,600,700,800,900',
-	'Oswald:200,300,400,500,600,700',
-	'Raleway:100,200,300,400,500,600,700,800,900',
-	'Nunito:200,300,400,500,600,700,800,900',
-	'Handjet:100,200,300,400,500,600,700,800,900',
-	'Pacifico:400',
-	'Caveat:400,500,600,700',
-	'Amatic SC:400,700',
-	'Russo One:400',
-	'Sofia Sans Condensed:100,200,300,400,500,600,700,800,900',
-	'Bad Script:400',
-	'Tiny5:400'
-]
-
-fonts.forEach(font => {
-	let option = document.createElement("option")
-	option.value = font
-	option.innerHTML = font.split(":")[0]
-	document.querySelector("#customization-fonts").appendChild(option)
-})
-
-
-
-function applyFont() {
-	// #region Выбор шрифта
-	let font = document.querySelector("#customization-fonts").value.split(":")[0]
-	document.documentElement.style.setProperty('--font-family', font)
-	// #endregion Выбор шрифта
-
-	// #region Размер шрифта
-	let size = document.querySelector("#customization-sizes").value
-	document.documentElement.style.setProperty('--font-size', `${size}px`)
-	// #endregion Размер шрифта
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Security-Policy" content="
+	default-src 'self'; 
+	script-src 'self'; 
+	style-src 'self' https://fonts.googleapis.com http://fonts.googleapis.com;
+  	font-src 'self' https://fonts.gstatic.com;">
+	<title>Донатгол для ивентов</title>
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<header>
+		<span><a href="#home">Главная</a></span>
+		<span><a href="#customization">Кастомизация</a></span>
+		<span><a href="#connect">Подключить</a></span>
+		<div id="donategoal">
+			<div id="background1"></div>
+			<div id="background2"></div>
+			<div id="title">
+				<span id="title-text" contenteditable="true">Донатгол для ивентов</span>
+				&nbsp;&nbsp;
+				<span id="title-count">(6)</span>
+			</div>
 	
-	// #region Насыщенность шрифта
-	let weightInput = document.querySelector("#customization-weights")
-	let weights = document.querySelector("#customization-fonts").value.split(":")[1].split(",")
-	weightInput.min = weights[0]
-	if (weights.length > 1) {
-		weightInput.max = weights[weights.length - 1]
-		weightInput.step = weights[1] - weights[0]
-	} else {
-		weightInput.max = weights[0]
-		weightInput.step = 100
-	}
+			<div id="values">
+				<span id="now">1900</span>
+				<span id="goal">2000</span>
+			</div>
+		</div>
+		<span>Автор: <a href="https://www.twitch.tv/declider" target="_blank">declider</a></span>
+		<span><a href="https://github.com/declider/donategoal" target="_blank">GitHub</a></span>
+		<span>Discord: declider</span>
+	</header>
+	
+	<section id="home">
+		<div class="feature">
+			<h2>Одновременная поддержка
+				<span>DonationAlerts</span>,
+				<span>DonatePay</span> и
+				<span title="Работает только с рублями.">StreamElements</span>
+			</h2>
+			<p>
+				Все донаты из всех подключенных платформ заполняют общий донатгол.
+			</p>
+		</div>
+		<div class="feature">
+			<h2>Быстрое изменение данных прямо в OBS</h2>
+			<p>
+				Всю настройку сбора можно произвести прямо в OBS кликнув кнопку "Взаимодействовать" на источнике виджета.
+				Не нужно посещать какие-либо сайты.
+			</p>
+		</div>
+		<div class="feature">
+			<h2>Автоматические подсчёты</h2>
+			<p>
+				Виджет может самостоятельно обновляться и изменять текущую сумму и цель сбора по
+				<abbr id="show-rules">гибким настраиваемым правилам</abbr>.
+				Все математические подсчёты будут производиться автоматически без вмешательства стримера, вне зависимости от количества донатов или их размера.
+			</p>
+		</div>
+		<div class="feature">
+			<h2>Поддержка управления модераторами на Twitch</h2>
+			<p>
+				При необходимости модераторы могут корректировать данные виджета через простые <abbr id="show-commands">команды в чате</abbr>.
+			</p>
+		</div>
+		<div class="feature">
+			<h2>Кастомизация</h2>
+			<p>
+				Лёгкое <a href="#customization">изменение</a> внешнего вида виджета.
+			</p>
+		</div>
+		<div class="feature">
+			<h2>Интеграция для разработчиков</h2>
+			<p>
+				Через открытый виджетом 
+				<a href="https://github.com/declider/donategoal/blob/main/widget/websocket.js" target="_blank">вебсокет</a>-клиент
+				можно программно получать все данные о сборе,
+				менять эти данные и получать оповещения по событиям.
+			</p>
+		</div>
+		<a role="button" href="#connect">Подключить</a>
+	</section>
+	<section id="connect">
+		<span>Выберите что хотите подключить. Если делаете это на стриме - скройте экран.</span>
+		<hr>
+		<div>
+			<h2 id="donationalerts-title">DonationAlerts</h2>
+			<button id="donationalerts-auth">Авторизоваться</button>
+		</div>
+		<div>
+			<h2 id="donatepay-title">DonatePay</h2>
+			Скопируйте <a href="https://donatepay.ru/page/api", target="_blank">отсюда</a>
+			<input id="donatepay-auth" placeholder="Секретный API ключ" type="password">
+			и <input id="donatepay-id" placeholder="ID (клик по аватарке)" type="password">
+		</div>
+		<div>
+			<h2 id="streamelements-title" title="Работает только с рублями.">StreamElements</h2>
+			Скопируйте <a href="https://streamelements.com/dashboard/account/channels", target="_blank">отсюда</a>
+			<input id="streamelements-auth" placeholder="Секретный JWT токен" type="password">
+		</div>
+		<div>
+			<h2 id="twitch-title">Команды для модераторов Twitch чата</h2>
+			Впишите сюда <input id="twitch-channel" placeholder="Twitch канал" type="text"> свой канал на Twitch
+		</div>
+		<div>
+			<h2 id="ws-title">WebSocket</h2>
+			Убедитесь что доверяете вписанному адресу: 
+			<input id="ws-url" type="text" placeholder="ws://locahost:5000">
+		</div>
+		<hr>
+		<div>
+			Скопируйте ссылку кнопкой ниже и вставьте её в OBS как источник браузера.<br>
+			Обрежьте настройки снизу, зажав ALT и потянув нижний край виджета.<br>
+			Чтобы настроить донатгол выберите созданный источник браузера и нажмите "Взаимодействовать".<br>
+			<button id="copy-link">Скопировать ссылку</button>
+		</div>
+		
+		
+		</div>
+	</section>
 
-	if (weights.value > weightInput.max || weights.value < weightInput.min) {
-		weightInput.value = weights[0]
-	}
+	<section id="customization">
+		<div class="customization-row">
+			Шрифт
+			<select id="customization-fonts">
+			</select>
+		</div>
+		<div class="customization-row">
+			Размер шрифта
+			<input id="customization-sizes" type="range" value="36" min="18" max="72" step="2">
+		</div>
+		<div class="customization-row">
+			Насыщенность шрифта
+			<input id="customization-weights" type="range" value="500" min="100" max="900" step="100">
+		</div>
+		<div class="customization-row">
+			Тень шрифта
+			<input id="customization-shadow" type="range" min="0" max="3" step="1" value="1">
+		</div>
+		<div class="customization-row">
+			Цвет заполнения (градиент)
+			<input id="customization-color-1" type="color" value="#ff861c">
+			<input id="customization-color-2" type="color" value="#fc7e0f">
+		</div>
+		<hr>
+		<span>Скопируйте код снизу, откройте свойства источника браузера с донатголом в OBS, и замените код в поле CSS на скопированный.</span>
+		<pre><code></pre></code>
+		<button id="copy-css">Скопировать</button>
+	</section>
 
-	if (weights.length == 1) {
-		weightInput.disabled = true
-	} else {
-		weightInput.disabled = false
-	}
+	<dialog id="mod-commands">
+		Можно использовать либо <code>!дг</code> либо <code>!донатгол</code><br>
+		Значения можно увеличивать через <code>+число</code><br>
+		Уменьшать через <code>-число</code><br>
+		Или выставлять точные значения через <code>число</code><br>
+		<br>
+		Например:<br>
+		<code>!дг сумма 1000</code> устанавливает текущую сумму в 1000 рублей<br>
+		<code>!дг цель -100</code> уменьшает цель сбора на 100 рублей<br>
+		<code>!дг счётчик 0</code> обнуляет счётчик<br>
+		<code>!дг счётчик +1</code> увеличивает текущий счётчик на 1<br>
+		<br>
+		<details>
+			<summary>Все возможные элементы для изменения:</summary>
+			<code>!дг название Какой-то текст</code> - текст на донатгола<br>
+			<code>!дг сумма число</code> - текущая сумма<br>
+			<code>!дг цель число</code> - цель сбора<br>
+			<code>!дг счётчик число</code> - значение счётчика<br>
+			<code>!дг countlimit число</code> - лимит счётчика<br>
+			<code>!дг step число</code> - автоувеличение цели (0 - выключено)<br>
+			<code>!дг stepmode в/на</code> - режим автоувеличения<br>
+			<code>!дг boost число</code> - рост автоувеличения (0 - выключено)<br>
+			<code>!дг boostmode в/на</code> - режим роста<br>
+		</details>
 
-	let weight = weightInput.value
-	document.documentElement.style.setProperty('--font-weight', weight)
-	// #endregion Насыщенность шрифта
+		<br>
+		<form method="dialog">
+			<button>Закрыть</button>
+		</form>
+	</dialog>
 
-	// #region Тень шрифта
-	let shadow = document.querySelector("#customization-shadow").value
-	document.documentElement.style.setProperty('--shadow', `var(--shadow-${shadow})`)
-	// #endregion Тень шрифта
+	<dialog id="rules">
+		При каждом успешном сборе виджет самостоятельно просчитывает избыток и ставит его в текущую сумму,
+		а также увеличивает счётчик (цифру около названия сбора) на 1.
+		Эффект повторяется пока эта сумма выше чем цель сбора.
+		<br>
+		Например: цель 1000 рублей, пришёл донат в 3500 рублей.
+		Донатгол выставит сумму в 500 рублей, и увеличит счётчик на 3 потому что донатгол был заполнен трижды (3 раза по 1000 рублей, 500 остаток).
+		<br><br>
+		Счётчик - важный элемент, позволяющий не запутаться сколько раз был заполнен донатгол после очень больших или частых донатов
+		(без него другие правила работать не будут).
+		<br><br>
+		При необходимости можно выставить лимит для счётчика, при его достижении донатгол не будет обновляться автоматически.
+		<br><br>
+		Цель сбора можно автоматически увеличивать на какое-то число или в какое-то количество раз при каждом сборе.
+		<br>
+		Например: цель 500 рублей, автоувеличение на 200 рублей, пришёл донат 3000 рублей.
+		Заполнение будет таким: 3000/500 > 2500/700 > 1800/900 > 900/1100.
+		Цель трижды увеличилась на 200 рублей, а счётчик увеличился на 3.
+		<br><br>
+		Саму сумму автоувеличения тоже можно увеличивать если есть необходимость на какое-то число или в какое-то количество раз.
+		<br>
+		Например: цель 1000 рублей, автоувеличение на 200 рублей растёт на 100 каждый раз, пришёл донат 7000 рублей.
+		Заполнение будет таким: 7000/1000 > 6000/1200 > 4800/1500 > 3300/1900 > 1400/2400.
+		Счётчик увеличился на 4, а следующее автоувеличение будет на 600 рублей.
+		<br><br>
+		Цель сбора можно ограничить чтобы она не привышала какое-то значение ни при каких обстоятельствах.
+		<br><br>
+		<form method="dialog">
+			<button>Закрыть</button>
+		</form>
+	</dialog>
 
-	// #region Цвета
-	let color1 = document.querySelector("#customization-color-1").value
-	let color2 = document.querySelector("#customization-color-2").value
-	document.documentElement.style.setProperty('--bg-color', `linear-gradient(to right, ${color1}, ${color2})`)
-	// #endregion Цвета
-
-	let code = `@import url('https://fonts.googleapis.com/css2?family=${font.replace(" ", "+")}:wght@${weight}&display=swap');
-
-:root {
-	--bg-color: linear-gradient(to right, ${color1}, ${color2});
-	--font-family: '${font}';
-	--font-weight: ${weight};
-	--font-size: ${size}px;
-	--shadow: var(--shadow-${shadow});
-}
-
-body { background-color: rgba(0, 0, 0, 0); margin: 0px auto; overflow: hidden; }`
-	document.querySelector("code").textContent = code
-}
-
-applyFont()
-
-document.querySelector("#customization-fonts").addEventListener("input", applyFont)
-document.querySelector("#customization-sizes").addEventListener("input", applyFont)
-document.querySelector("#customization-weights").addEventListener("input", applyFont)
-document.querySelector("#customization-shadow").addEventListener("input", applyFont)
-document.querySelector("#customization-color-1").addEventListener("input", applyFont)
-document.querySelector("#customization-color-2").addEventListener("input", applyFont)
-
-
-function copyCSS() {
-	let button = document.querySelector("#copy-css")
-	let code = document.querySelector("code").textContent
-	navigator.clipboard.writeText(code)
-	button.textContent = "Скопировано!"
-
-	setTimeout(() => {
-		button.textContent = "Скопировать"
-	}, 3000)
-
-}
-document.querySelector("#copy-css").addEventListener("click", copyCSS)
-// #endregion Кастомизация
-
-
-
-// #region Подключения
-let daToken, dpToken, dpId, seToken, twitchChannel, wsUrl
-
-
-function donationAlertsAuth() {
-	window.open(
-		"https://www.donationalerts.com/oauth/authorize?client_id=10375&response_type=token&scope=oauth-donation-subscribe+oauth-user-show+oauth-donation-index&force_verify=true&redirect_uri=https://declider.github.io/donategoal/",
-		"authWindow",
-		"width=600,height=800"
-	)
-}
-document.querySelector("#donationalerts-auth").addEventListener("click", donationAlertsAuth)
-
-
-function donationAlertsAuthFinish(accessToken) {
-	window.location.hash = "connect"
-	daToken = accessToken
-	document.querySelector("#donationalerts-title").dataset.connected = "true"
-}
-
-
-if (window.location.hash.startsWith("#access_token") && window.opener) {
-	let hash = window.location.hash
-	window.location.hash = "#donationalerts-auth"
-	let accessToken = hash.split("#access_token=")[1].split("&")[0]
-	window.opener.donationAlertsAuthFinish(accessToken)
-	window.close()
-}
-
-
-// TODO ctrl+c ctrl+v, переделать
-function donatePayAuth() {
-	let token = document.querySelector("#donatepay-auth")
-	let id_ = document.querySelector("#donatepay-id")
-	if (token.value && token.value.length > 30 && id_.value) {
-		document.querySelector("#donatepay-title").dataset.connected = "true"
-		dpToken = token.value
-		dpId = id_.value
-		console.log(dpToken, dpId)
-	} else {
-		document.querySelector("#donatepay-title").dataset.connected = "false"
-		dpToken = undefined
-		dpId = undefined
-	}
-}
-document.querySelector("#donatepay-auth").addEventListener("change", donatePayAuth)
-document.querySelector("#donatepay-id").addEventListener("change", donatePayAuth)
-
-
-function streamElementsAuth() {
-	let input = document.querySelector("#streamelements-auth")
-	if (input.value && input.value.length > 30) {
-		document.querySelector("#streamelements-title").dataset.connected = "true"
-		seToken = input.value
-	} else {
-		document.querySelector("#streamelements-title").dataset.connected = "false"
-		seToken = undefined
-	}
-}
-document.querySelector("#streamelements-auth").addEventListener("change", streamElementsAuth)
-
-
-
-function twitchAuth() {
-	let input = document.querySelector("#twitch-channel")
-	if (input.value && input.value.length > 2) {
-		document.querySelector("#twitch-title").dataset.connected = "true"
-		twitchChannel = input.value
-	} else {
-		document.querySelector("#twitch-title").dataset.connected = "false"
-		twitchChannel = undefined
-	}
-}
-document.querySelector("#twitch-channel").addEventListener("change", twitchAuth)
-
-
-function wsUrlAuth() {
-	let input = document.querySelector("#ws-url")
-	if (input.value && input.value.length > 6) {
-		document.querySelector("#ws-title").dataset.connected = "true"
-		wsUrl = input.value
-	} else {
-		document.querySelector("#ws-title").dataset.connected = "false"
-		wsUrl = undefined
-	}
-}
-document.querySelector("#ws-url").addEventListener("change", wsUrlAuth)
-
-
-function copyLink() {
-	let url = new URL("https://declider.github.io/donategoal/widget")
-	let button = document.querySelector("#copy-link")
-
-	url.searchParams.set("v", "2")
-
-	if (daToken) {
-		url.searchParams.set("daToken", daToken)
-	}
-	if (dpToken && dpId) {
-		url.searchParams.set("dpToken", dpToken)
-		url.searchParams.set("dpId", dpId)
-	}
-	if (seToken) {
-		url.searchParams.set("seToken", seToken)
-	}
-	if (twitchChannel) {
-		url.searchParams.set("twitchChannel", twitchChannel)
-	}
-	if (wsUrl) {
-		url.searchParams.set("wsUrl", wsUrl)
-	}
-
-	navigator.clipboard.writeText(url.toString())
-	button.textContent = "Скопировано!"
-
-	setTimeout(() => {
-		button.textContent = "Скопировать ссылку"
-	}, 3000)
-}
-document.querySelector("#copy-link").addEventListener("click", copyLink)
-// #endregion Подключения
-
-
-
-
-function showCommands() {
-	document.querySelector("dialog#mod-commands").showModal()
-}
-document.querySelector("#show-commands").addEventListener("click", showCommands)
-
-
-function showRules() {
-	document.querySelector("dialog#rules").showModal()
-}
-document.querySelector("#show-rules").addEventListener("click", showRules)
+	<script src="script.js"></script>
+</body>
+</html>

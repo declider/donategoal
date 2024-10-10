@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Security-Policy" content="
+		default-src 'self' https://*;
+		script-src 'self' https://cdn.jsdelivr.net https://cdn.socket.io;
+		style-src 'self' https://fonts.googleapis.com http://fonts.googleapis.com;
+  		font-src 'self' https://fonts.gstatic.com;
+		connect-src 'self' 
+			ws://localhost:* 
+			ws://127.0.0.1:* 
+			wss://* 
+			wss://*:* 
+			https://realtime.streamelements.com 
+			https://declider.helioho.st/api/da_data 
+			https://centrifugo.donationalerts.com 
+			https://www.donationalerts.com/api/v1/centrifuge/subscribe 
+			https://donatepay.ru/api/v2/socket/token 
+			https://centrifugo.donatepay.ru:43002;
+		">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Виджет</title>
+		<link rel="stylesheet" href="style.css">
+		<script src="https://cdn.jsdelivr.net/gh/centrifugal/centrifuge-js@2.X.X/dist/centrifuge.min.js"></script>
+		<script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/comfy.js@latest/dist/comfy.min.js"></script>
+	</head>
+	<body>
+		<div id="donategoal">
+			<div id="background1"></div>
+			<div id="background2"></div>
+			<div id="title">
+				<span id="title-text">Сбор</span>
+				&nbsp;&nbsp;
+				<span id="title-count"></span>
+			</div>
+
+			<div id="values">
+				<span id="sum">0</span>
+				<span id="goal">100</span>
+			</div>
+		</div>
+
+		<div id="settings">
+			<div>
+				<input type="text" id="title-value" value="DonateGoal" placeholder="без названия">
+				&nbsp;|&nbsp;
+				Сумма
+				<input type="number" id="sum-value" value="0" min="0">
+				&nbsp;|&nbsp;
+				Цель
+				<input type="number" id="goal-value" value="500" min="0">
+				&nbsp;|&nbsp;
+				<input type="number" id="sum-add" placeholder="Добавить...">
+			</div>
+
+			<div>
+				Включить счётчик и автоматически обновлять сбор
+				<input type="checkbox" id="count-status" checked>
+				<div id="count-settings">
+					<br>
+					Значение счётчика
+					<input type="number" id="count-value" min="0" value="0"><br><br>
+
+					<span>
+						Максимальное значение на счётчике
+					</span>
+					<input type="number" id="count-limit-value" value="0" min="0">
+					(0 = без ограничения)<br><br>
+
+					<span title="Цель сбора (справа на донатголе) будет увеличиваться при каждом успешном сборе">
+						Увеличивать цель сбора при успешном сборе
+					</span>
+					<select id="step-mode">
+						<option value="add" selected>на</option>
+						<option value="multiply">в</option>
+					</select>
+					<input type="number" id="step-value" placeholder="0" value="0">
+					(0 = не увеличивать)<br><br>
+					
+					<span title="При успешном сборе будет увеличиваться не только цель сбора, но и число на которое эта цель увеличивается.">
+						Увеличивать сумму увеличения при успешном сборе
+					</span>
+					<select id="boost-mode">
+						<option value="add" selected>на</option>
+						<option value="multiply">в</option>
+					</select>
+					<input type="number" id="boost-value" min="0" value="0">
+					(0 = не увеличивать)<br><br>
+					
+					Максимальная возможная цель сбора
+					<input type="number" id="goal-limit-value">
+					(0 = без ограничения)<br>
+
+				</div>
+				
+			</div>
+
+			<div>
+				<button onclick="clearItem()" title="Сброс текущего виджета">Сброс данных</button>
+				&nbsp;|&nbsp;
+				<button onclick="clearStorage()" title="Сброс всех версий виджета">Сброс ВСЕГО</button>
+			</div>
+
+			<div id="tip">
+				Обрежь часть с настройками через зажатый ALT в OBS. Чтобы их изменить - нажми "Взаимодействовать" на источнике.
+			</div>
+			
+		</div>
+
+		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript" src="websocket.js"></script>
+		<script type="text/javascript" src="donatepay.js"></script>
+		<script type="text/javascript" src="donationalerts.js"></script>
+		<script type="text/javascript" src="streamelements.js"></script>
+		<script type="text/javascript" src="chat.js"></script>
+		
+	</body>
+</html>

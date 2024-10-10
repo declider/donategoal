@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
+:root {
+	--bg-color: linear-gradient(to right, #F57507, #F59C07);
+	--font-family: "Roboto Slab";
+	--font-weight: 500;
+	--font-size: 36px;
+	--shadow-0: none;
+	--shadow-1: rgb(0, 0, 0) 1px 0px 0px, rgb(0, 0, 0) 0.540302px 0.841471px 0px, rgb(0, 0, 0) -0.416147px 0.909297px 0px, rgb(0, 0, 0) -0.989993px 0.14112px 0px, rgb(0, 0, 0) -0.653644px -0.756803px 0px, rgb(0, 0, 0) 0.283662px -0.958924px 0px, rgb(0, 0, 0) 0.96017px -0.279416px 0px;
+	--shadow-2: rgb(0, 0, 0) 2px 0px 0px, rgb(0, 0, 0) 1.75517px 0.958851px 0px, rgb(0, 0, 0) 1.0806px 1.68294px 0px, rgb(0, 0, 0) 0.141474px 1.99499px 0px, rgb(0, 0, 0) -0.832294px 1.81859px 0px, rgb(0, 0, 0) -1.60229px 1.19694px 0px, rgb(0, 0, 0) -1.97999px 0.28224px 0px, rgb(0, 0, 0) -1.87291px -0.701566px 0px, rgb(0, 0, 0) -1.30729px -1.51361px 0px, rgb(0, 0, 0) -0.421592px -1.95506px 0px, rgb(0, 0, 0) 0.567324px -1.91785px 0px, rgb(0, 0, 0) 1.41734px -1.41108px 0px, rgb(0, 0, 0) 1.92034px -0.558831px 0px;
+	--shadow-3: rgb(0, 0, 0) 3px 0px 0px, rgb(0, 0, 0) 2.83487px 0.981584px 0px, rgb(0, 0, 0) 2.35766px 1.85511px 0px, rgb(0, 0, 0) 1.62091px 2.52441px 0px, rgb(0, 0, 0) 0.705713px 2.91581px 0px, rgb(0, 0, 0) -0.287171px 2.98622px 0px, rgb(0, 0, 0) -1.24844px 2.72789px 0px, rgb(0, 0, 0) -2.07227px 2.16926px 0px, rgb(0, 0, 0) -2.66798px 1.37182px 0px, rgb(0, 0, 0) -2.96998px 0.42336px 0px, rgb(0, 0, 0) -2.94502px -0.571704px 0px, rgb(0, 0, 0) -2.59586px -1.50383px 0px, rgb(0, 0, 0) -1.96093px -2.27041px 0px, rgb(0, 0, 0) -1.11013px -2.78704px 0px, rgb(0, 0, 0) -0.137119px -2.99686px 0px, rgb(0, 0, 0) 0.850987px -2.87677px 0px, rgb(0, 0, 0) 1.74541px -2.43999px 0px, rgb(0, 0, 0) 2.44769px -1.73459px 0px, rgb(0, 0, 0) 2.88051px -0.838247px 0px;
+	--shadow: var(--shadow-1);
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	background: none;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+* {
+	color: rgb(224,224,224);
+	border: none;
+	outline: none;
+}
+
+#donategoal {
+	position: relative;
+	margin-left: 4px;
+	width: calc(100% - 8px);
+	height: 100px;
+}
+
+#donategoal * {
+	font-family: var(--font-family);
+	font-optical-sizing: auto;
+	font-style: normal;
+	font-size: var(--font-size);
+	text-align: center;
+	font-weight: var(--font-weight);
+	color: #FFFFFF;
+	/* -webkit-text-stroke: 1px black; */
+	text-shadow: var(--shadow);
+	user-select: none;
+}
+
+#background1, #background2 {
+	top: 4px;
+	position: absolute;
+	height: 70px;
+	width: 100%;
+	border-radius: 10px;
+}
+
+#background1 {
+	background-color: rgb(78, 78, 78);
+	outline: 2px solid black;
+}
+
+#background2 {	
+	background: var(--bg-color);
+	clip-path: inset(0px var(--percent) 0px 0px);
+	transition: clip-path 1s;
+}
+
+#title {
+	position: absolute;
+	line-height: 1;
+	top: 3px;
+	height: 70px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+
+#title-count:empty {
+	display: none;
+}
+
+#values {
+	position: absolute;
+	top: 3px;
+	height: 70px;
+	left: 50%;
+	width: 97%;
+	transform: translate(-50%, 0%);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#settings {
+	background-color: #1f1f1f;
+	width: 100%;
+	text-align: left;
+	padding-inline: 5px;
+}
+
+#settings * {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-weight: 300;
+}
+
+#settings > div {
+	padding-bottom: 8px;
+	padding-top: 4px;
+}
+
+#settings > div:not(:last-child) {
+	border-bottom: 1px solid rgb(61, 61, 61);
+}
+
+h3 {
+	margin: 0;
+	padding: 10px;
+}
+
+input {
+	border: none;
+	padding: 3px;
+	border-radius: 3px;
+	color: black;
+}
+
+input[type="text"]{
+	min-width: 60px;
+	width: fit-content;
+}
+
+select, option {
+	color: black;
+}
+
+#title-value, #custom-goals-value {
+	width: 140px;
+}
+
+input[type="number"] {
+	width: 60px;
+}
+
+select {
+	cursor: pointer;
+}
+
+button {
+	background-color: #3b3b3b;
+	border: none;
+	padding: 4px;
+	border-radius: 5px;;
+	color: rgb(37, 37, 37);
+	font-size: 16px;
+	color: rgb(224,224,224);
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #4d4d4d;
+}
+
+div, span {
+	cursor: default;
+}
+
+#sum-add {
+	width: 80px;
+}
+
+#tip {
+	text-align: center;
+	opacity: 0.4;
+}
+
+#tip:hover {
+	opacity: 1;
+}

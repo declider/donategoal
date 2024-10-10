@@ -122,7 +122,7 @@ let daToken, dpToken, dpId, seToken, twitchChannel, wsUrl
 
 function donationAlertsAuth() {
 	window.open(
-		"https://www.donationalerts.com/oauth/authorize?client_id=10375&response_type=token&scope=oauth-donation-subscribe+oauth-user-show+oauth-donation-index&force_verify=true&redirect_uri=http://127.0.0.1:3000/landing/index.html",
+		"https://www.donationalerts.com/oauth/authorize?client_id=10375&response_type=token&scope=oauth-donation-subscribe+oauth-user-show+oauth-donation-index&force_verify=true&redirect_uri=http://declider.github.io/donategoal",
 		"authWindow",
 		"width=600,height=800"
 	)

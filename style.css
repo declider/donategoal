@@ -1,0 +1,300 @@
+:root {
+	--bg-color: linear-gradient(to right, #ff861c, #fc7e0f);
+	--font-family: "Roboto Slab";
+	--font-weight: 500;
+	--font-size: 36px;
+	--shadow-0: none;
+	--shadow-1: rgb(0, 0, 0) 1px 0px 0px, rgb(0, 0, 0) 0.540302px 0.841471px 0px, rgb(0, 0, 0) -0.416147px 0.909297px 0px, rgb(0, 0, 0) -0.989993px 0.14112px 0px, rgb(0, 0, 0) -0.653644px -0.756803px 0px, rgb(0, 0, 0) 0.283662px -0.958924px 0px, rgb(0, 0, 0) 0.96017px -0.279416px 0px;
+	--shadow-2: rgb(0, 0, 0) 2px 0px 0px, rgb(0, 0, 0) 1.75517px 0.958851px 0px, rgb(0, 0, 0) 1.0806px 1.68294px 0px, rgb(0, 0, 0) 0.141474px 1.99499px 0px, rgb(0, 0, 0) -0.832294px 1.81859px 0px, rgb(0, 0, 0) -1.60229px 1.19694px 0px, rgb(0, 0, 0) -1.97999px 0.28224px 0px, rgb(0, 0, 0) -1.87291px -0.701566px 0px, rgb(0, 0, 0) -1.30729px -1.51361px 0px, rgb(0, 0, 0) -0.421592px -1.95506px 0px, rgb(0, 0, 0) 0.567324px -1.91785px 0px, rgb(0, 0, 0) 1.41734px -1.41108px 0px, rgb(0, 0, 0) 1.92034px -0.558831px 0px;
+	--shadow-3: rgb(0, 0, 0) 3px 0px 0px, rgb(0, 0, 0) 2.83487px 0.981584px 0px, rgb(0, 0, 0) 2.35766px 1.85511px 0px, rgb(0, 0, 0) 1.62091px 2.52441px 0px, rgb(0, 0, 0) 0.705713px 2.91581px 0px, rgb(0, 0, 0) -0.287171px 2.98622px 0px, rgb(0, 0, 0) -1.24844px 2.72789px 0px, rgb(0, 0, 0) -2.07227px 2.16926px 0px, rgb(0, 0, 0) -2.66798px 1.37182px 0px, rgb(0, 0, 0) -2.96998px 0.42336px 0px, rgb(0, 0, 0) -2.94502px -0.571704px 0px, rgb(0, 0, 0) -2.59586px -1.50383px 0px, rgb(0, 0, 0) -1.96093px -2.27041px 0px, rgb(0, 0, 0) -1.11013px -2.78704px 0px, rgb(0, 0, 0) -0.137119px -2.99686px 0px, rgb(0, 0, 0) 0.850987px -2.87677px 0px, rgb(0, 0, 0) 1.74541px -2.43999px 0px, rgb(0, 0, 0) 2.44769px -1.73459px 0px, rgb(0, 0, 0) 2.88051px -0.838247px 0px;
+	--shadow: var(--shadow-1);
+}
+
+
+html {
+	font-size: 16px;
+}
+
+section {
+	gap: 24px;
+}
+
+
+@media (min-width: 1920px) {
+	html {
+		font-size: 18px;
+	}
+	section {
+		gap: 32px;
+	}
+}
+
+@media (min-width: 2560px) {
+	html {
+		font-size: 22px;
+	}
+	section {
+		gap: 54px;
+	}
+}
+
+
+* {
+	margin: 0; 
+	padding: 0; 
+	scroll-behavior: smooth;
+	font-family: 'Nunito', sans-serif;
+	font-weight: 300;
+	font-optical-sizing: auto;
+	font-style: normal;
+	color: rgb(224, 224, 224);
+	/* line-height: 1; */
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #1b1b1b;
+	overflow-y: auto;
+	overflow-x: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+header {
+	display: flex;
+	justify-content: space-around;
+	align-items: top;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	gap: 10px;
+
+}
+
+header > span {
+	flex: 1 1 0;
+  	/* width: 0; */
+	text-align: center;
+}
+
+h2, h2 * {
+	font-weight: 500;
+}
+
+section {
+	display: none;
+	align-items: center;
+	text-align: center;
+	flex-direction: column;
+}
+
+section:target {
+	display: flex;
+}
+
+abbr {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+hr {
+	width: 50%;
+	opacity: 0.3;
+	border-bottom: 1px;
+}
+
+input {
+	background-color: #333333;
+	color: white;
+	font-weight: normal;
+	padding: 2px;
+	border: none;
+	border-radius: 4px;
+	outline: none;
+}
+
+button, [role=button] {
+	background-color: #3a3939;
+	padding: 10px;
+	font-size: 0.9rem;
+	outline: none;
+	border: 1px solid #646060;
+	border: none;
+	border-radius: 6px;
+	text-decoration: none;
+}
+
+button:hover, [role=button]:hover {
+	background-color: #464545;
+}
+
+.feature {
+	display: flex;
+	min-width: 900px;
+	width: 50%;
+	flex-direction: column;
+	gap: 10px;
+}
+
+h2[data-connected="true"]::before {
+	content: "✔ ";
+}
+
+footer {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	margin-top: 3%;
+	margin-bottom: 1%;
+	gap: 5%;
+}
+
+select {
+	background-color: #333333;
+	border: none;
+	outline: none;
+	padding: 6px;
+	border-radius: 6px;
+}
+
+option {
+	border: none;
+}
+
+/* #region Кастомизация */
+#donategoal {
+	position: relative;
+	width: 800px;
+	min-width: 800px;
+	max-width: 800px;
+	height: 100px;
+}
+
+#donategoal * {
+	font-family: var(--font-family);
+	font-optical-sizing: auto;
+	font-style: normal;
+	font-size: var(--font-size);
+	text-align: center;
+	font-weight: var(--font-weight);
+	color: white;
+	text-shadow: var(--shadow);
+}
+
+#background1, #background2 {
+	top: 4px;
+	position: absolute;
+	height: 70px;
+	width: 100%;
+	border-radius: 10px;
+}
+
+#background1 {
+	background-color: rgb(78, 78, 78);
+	outline: 2px solid black;
+}
+
+#background2 {	
+	background: var(--bg-color);
+	clip-path: inset(0px 5% 0px 0px);
+}
+
+#title {
+	position: absolute;
+	line-height: 1;
+	top: 3px;
+	height: 70px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+
+#title-count:empty {
+	display: none;
+}
+
+#values {
+	position: absolute;
+	top: 3px;
+	height: 70px;
+	left: 50%;
+	width: 97%;
+	transform: translate(-50%, 0%);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#title-text {
+	z-index: 50;
+}
+
+.customization-row {
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+	align-items: center;
+}
+
+input[type=color] {
+	border: none;
+	outline: none;
+	border-radius: 6px;
+}
+
+section pre {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 100;
+	text-align: left !important;
+	font-size: 14px;
+	background-color: #464545;
+	padding: 5px;
+	margin: 0;
+	border-radius: 5px;
+}
+
+/* #endregion Кастомизация */
+
+dialog {
+	font-size: 1.3rem;
+	background-color: #252525;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	position: absolute;
+	/* width: 70%; */
+	width: fit-content;
+	min-width: 70%;
+	top: auto;
+	padding: 50px;
+	border-radius: 6px;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%) translateX(-50%);
+}
+
+body:has(dialog[open]) section, body:has(dialog[open]) header {
+	filter: blur(4px) grayscale(50%) brightness(50%);
+}
+
+dialog code {
+	font-family: monospace !important;
+	background-color: #3f3f3f;
+}
+
+/* #region Scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+	padding: 0 !important;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+	padding: 0 !important;
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, 0.12);
+	border-radius: 8px;
+	padding: 0 !important;
+}
+/* #endregion Scrollbar */

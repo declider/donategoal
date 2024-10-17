@@ -38,7 +38,7 @@ async function startDTT() {
 		dttEventSource.close()
 		setTimeout(function() {
 			startDTT()
-		}, 3000)
+		}, 5000)
 	}
 
 	console.log("Подключен Donatty")
@@ -47,4 +47,8 @@ async function startDTT() {
 
 if (dttToken && dttRef) {
 	startDTT()
+	setInterval(() => {
+		dttEventSource.close()
+		startDTT()
+	}, 30 * 60 * 1000)
 }

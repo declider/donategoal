@@ -32,6 +32,16 @@ async function startDTT() {
 			}
 		} catch {}
 	}
+
+	eventSource.onerror = function(error) {
+		if (eventSource.readyState === EventSource.CLOSED) {
+			setTimeout(function() {
+				startDTT()
+			}, 3000)
+		}
+	}
+
+	console.log("Подключен Donatty")
 }
 
 

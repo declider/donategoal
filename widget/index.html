@@ -4,10 +4,10 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="Content-Security-Policy" content="
-		default-src 'self';
+		default-src 'self' https://*;
 		script-src 'self' https://cdn.jsdelivr.net https://cdn.socket.io;
-		style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
-		font-src 'self' https://fonts.gstatic.com;
+		style-src 'self' https://fonts.googleapis.com http://fonts.googleapis.com 'unsafe-inline';
+  		font-src 'self' https://fonts.gstatic.com;
 		connect-src 'self' 
 			ws://localhost:* 
 			ws://127.0.0.1:* 

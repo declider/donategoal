@@ -20,7 +20,7 @@ section {
 }
 
 
-@media (min-width: 1920px) {
+@media (min-width: 1910px) {
 	html {
 		font-size: 18px;
 	}
@@ -29,7 +29,7 @@ section {
 	}
 }
 
-@media (min-width: 2560px) {
+@media (min-width: 2550px) {
 	html {
 		font-size: 22px;
 	}
@@ -133,6 +133,10 @@ button:hover, [role=button]:hover {
 	width: 50%;
 	flex-direction: column;
 	gap: 10px;
+}
+
+.faded {
+	opacity: 0.5;
 }
 
 h2[data-connected="true"]::before {

@@ -18,7 +18,7 @@ async function startDTT() {
 	let dttData = await getDTTData()
 	let dttJWT = dttData.response.accessToken
 
-	const url = `http://api-013.donatty.com/widgets/${dttRef}/sse?zoneOffset=-180&jwt=${dttJWT}`
+	const url = `https://api-013.donatty.com/widgets/${dttRef}/sse?zoneOffset=-180&jwt=${dttJWT}`
 
 	const eventSource = new EventSource(url)
 

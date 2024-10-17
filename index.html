@@ -116,21 +116,30 @@
 		</div>
 		<div>
 			<h2 id="streamelements-title" title="Работает только с рублями.">StreamElements</h2>
+			<span class="faded">(работает только с рублями)</span><br>
 			Скопируйте <a href="https://streamelements.com/dashboard/account/channels", target="_blank">отсюда</a>
 			<input id="streamelements-auth" placeholder="Секретный JWT токен" type="password">
 		</div>
 		<div>
+			<h2 id="donatty-title" title="Работает только с рублями.">Donatty</h2>
+			<!-- <span class="faded">(работает только с рублями)</span><br> -->
+			Скопируйте <a href="https://streamer.donatty.com/widgets" target="_blank">отсюда</a>
+			<input id="donatty-auth" placeholder="Ссылку на оповещения" type="password">
+			<br>
+		</div>
+		<div>
 			<h2 id="twitch-title">Команды для модераторов Twitch чата</h2>
-			Впишите сюда <input id="twitch-channel" placeholder="Twitch канал" type="text"> свой канал на Twitch
+			Впишите <input id="twitch-channel" placeholder="свой Twitch канал" type="text">
 		</div>
 		<div>
 			<h2 id="ws-title">WebSocket</h2>
-			Убедитесь что доверяете вписанному адресу: 
-			<input id="ws-url" type="text" placeholder="ws://locahost:5000">
+			<input id="ws-url" type="text" placeholder="ws://localhost:5000">
+			<br><span class="faded">Убедитесь что доверяете вписанному адресу</span>
 		</div>
 		<hr>
 		<div>
 			Скопируйте ссылку кнопкой ниже и вставьте её в OBS как источник браузера.<br>
+			При желании сделайте ширину виджета больше (не через растягивание, а через указания ширины в пикселях больше стандартных 800)<br>
 			Обрежьте настройки снизу, зажав ALT и потянув нижний край виджета.<br>
 			Чтобы настроить донатгол выберите созданный источник браузера и нажмите "Взаимодействовать".<br>
 			<button id="copy-link">Скопировать ссылку</button>

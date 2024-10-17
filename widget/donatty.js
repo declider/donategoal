@@ -1,5 +1,6 @@
 const dttRef = params.get("dttRef")
 const dttToken = params.get("dttToken")
+let dttEventSource
 
 
 async function getDTTData() {
@@ -20,9 +21,9 @@ async function startDTT() {
 
 	const url = `https://api-013.donatty.com/widgets/${dttRef}/sse?zoneOffset=-180&jwt=${dttJWT}`
 
-	const eventSource = new EventSource(url)
+	dttEventSource = new EventSource(url)
 
-	eventSource.onmessage = function(event) {
+	dttEventSource.onmessage = function(event) {
 		try {
 			let data = JSON.parse(event.data)
 			let currency = data.data.events[0].event.data.currency
@@ -33,12 +34,11 @@ async function startDTT() {
 		} catch {}
 	}
 
-	eventSource.onerror = function(error) {
-		if (eventSource.readyState === EventSource.CLOSED) {
-			setTimeout(function() {
-				startDTT()
-			}, 3000)
-		}
+	dttEventSource.onerror = function(e) {
+		dttEventSource.close()
+		setTimeout(function() {
+			startDTT()
+		}, 3000)
 	}
 
 	console.log("Подключен Donatty")

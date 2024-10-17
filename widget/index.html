@@ -4,10 +4,10 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="Content-Security-Policy" content="
-		default-src 'self' https://*;
+		default-src 'self';
 		script-src 'self' https://cdn.jsdelivr.net https://cdn.socket.io;
-		style-src 'self' https://fonts.googleapis.com http://fonts.googleapis.com 'unsafe-inline';
-  		font-src 'self' https://fonts.gstatic.com;
+		style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
+		font-src 'self' https://fonts.gstatic.com;
 		connect-src 'self' 
 			ws://localhost:* 
 			ws://127.0.0.1:* 
@@ -18,7 +18,9 @@
 			https://centrifugo.donationalerts.com 
 			https://www.donationalerts.com/api/v1/centrifuge/subscribe 
 			https://donatepay.ru/api/v2/socket/token 
-			https://centrifugo.donatepay.ru:43002;
+			https://centrifugo.donatepay.ru:43002 
+			https://api-012.donatty.com 
+			http://api-013.donatty.com;
 		">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Виджет</title>
@@ -115,6 +117,7 @@
 		<script type="text/javascript" src="donatepay.js"></script>
 		<script type="text/javascript" src="donationalerts.js"></script>
 		<script type="text/javascript" src="streamelements.js"></script>
+		<script type="text/javascript" src="donatty.js"></script>
 		<script type="text/javascript" src="chat.js"></script>
 		
 	</body>

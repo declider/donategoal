@@ -117,7 +117,7 @@ document.querySelector("#copy-css").addEventListener("click", copyCSS)
 
 
 // #region Подключения
-let daToken, dpToken, dpId, seToken, twitchChannel, wsUrl
+let daToken, dpToken, dpId, seToken, dttRef, dttToken, twitchChannel, wsUrl
 
 
 function donationAlertsAuth() {
@@ -178,6 +178,20 @@ function streamElementsAuth() {
 document.querySelector("#streamelements-auth").addEventListener("change", streamElementsAuth)
 
 
+function donattyAuth() {
+	let input = document.querySelector("#donatty-auth")
+	if (input.value && input.value.includes("ref") && input.value.includes("token")) {
+		document.querySelector("#donatty-title").dataset.connected = "true"
+		dttRef = input.value.split("ref=")[1].split("&")[0]
+		dttToken = input.value.split("token=")[1].split("&")[0]
+	} else {
+		document.querySelector("#donatty-title").dataset.connected = "false"
+		dttRef = undefined
+		dttToken = undefined
+	}
+}
+document.querySelector("#donatty-auth").addEventListener("change", donattyAuth)
+
 
 function twitchAuth() {
 	let input = document.querySelector("#twitch-channel")
@@ -220,6 +234,10 @@ function copyLink() {
 	}
 	if (seToken) {
 		url.searchParams.set("seToken", seToken)
+	}
+	if (dttRef && dttToken) {
+		url.searchParams.set("dttRef", dttRef)
+		url.searchParams.set("dttToken", dttToken)
 	}
 	if (twitchChannel) {
 		url.searchParams.set("twitchChannel", twitchChannel)

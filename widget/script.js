@@ -158,7 +158,7 @@ function loadStorage() {
 	sumValue.value = data["sumValue"] || 0
 	goalValue.value = data["goalValue"] || 500
 
-	countStatus.checked = data["countStatus"] || false
+	countStatus.checked = data["countStatus"] || true
 	countValue.value = data["countValue"] || 0
 	countLimitValue.value = data["countLimitValue"] || 0
 

@@ -1,5 +1,6 @@
 window.location.hash = window.location.hash ? window.location.hash : "home"
 
+const nextBtn = document.querySelector("#next-part-btn")
 
 // #region Кастомизация
 const fonts = [
@@ -134,6 +135,7 @@ function donationAlertsAuthFinish(accessToken) {
 	window.location.hash = "connect"
 	daToken = accessToken
 	document.querySelector("#donationalerts-title").dataset.connected = "true"
+	nextBtn.textContent = "Готово! Следующий этап"
 }
 
 
@@ -152,11 +154,13 @@ function donatePayAuth() {
 	let id_ = document.querySelector("#donatepay-id")
 	if (token.value && token.value.length > 30 && id_.value) {
 		document.querySelector("#donatepay-title").dataset.connected = "true"
+		nextBtn.textContent = "Готово! Следующий этап"
 		dpToken = token.value
 		dpId = id_.value
 		console.log(dpToken, dpId)
 	} else {
 		document.querySelector("#donatepay-title").dataset.connected = "false"
+		nextBtn.textContent = "Пропустить"
 		dpToken = undefined
 		dpId = undefined
 	}
@@ -169,9 +173,11 @@ function streamElementsAuth() {
 	let input = document.querySelector("#streamelements-auth")
 	if (input.value && input.value.length > 30) {
 		document.querySelector("#streamelements-title").dataset.connected = "true"
+		nextBtn.textContent = "Готово! Следующий этап"
 		seToken = input.value
 	} else {
 		document.querySelector("#streamelements-title").dataset.connected = "false"
+		nextBtn.textContent = "Пропустить"
 		seToken = undefined
 	}
 }
@@ -182,10 +188,12 @@ function donattyAuth() {
 	let input = document.querySelector("#donatty-auth")
 	if (input.value && input.value.includes("ref") && input.value.includes("token")) {
 		document.querySelector("#donatty-title").dataset.connected = "true"
+		nextBtn.textContent = "Готово! Следующий этап"
 		dttRef = input.value.split("ref=")[1].split("&")[0]
 		dttToken = input.value.split("token=")[1].split("&")[0]
 	} else {
 		document.querySelector("#donatty-title").dataset.connected = "false"
+		nextBtn.textContent = "Пропустить"
 		dttRef = undefined
 		dttToken = undefined
 	}
@@ -197,9 +205,11 @@ function twitchAuth() {
 	let input = document.querySelector("#twitch-channel")
 	if (input.value && input.value.length > 2) {
 		document.querySelector("#twitch-title").dataset.connected = "true"
+		nextBtn.textContent = "Готово! Следующий этап"
 		twitchChannel = input.value
 	} else {
 		document.querySelector("#twitch-title").dataset.connected = "false"
+		nextBtn.textContent = "Пропустить"
 		twitchChannel = undefined
 	}
 }
@@ -208,11 +218,13 @@ document.querySelector("#twitch-channel").addEventListener("change", twitchAuth)
 
 function wsUrlAuth() {
 	let input = document.querySelector("#ws-url")
-	if (input.value && input.value.length > 6) {
+	if (input.value && input.value.length > 6 && input.value.startsWith("ws")) {
 		document.querySelector("#ws-title").dataset.connected = "true"
+		nextBtn.textContent = "Готово! Следующий этап"
 		wsUrl = input.value
 	} else {
 		document.querySelector("#ws-title").dataset.connected = "false"
+		nextBtn.textContent = "Пропустить"
 		wsUrl = undefined
 	}
 }
@@ -254,6 +266,21 @@ function copyLink() {
 	}, 3000)
 }
 document.querySelector("#copy-link").addEventListener("click", copyLink)
+
+
+
+let currentPart = 0
+function nextPart() {
+	let parts = document.querySelectorAll(".auth-part")
+	parts[currentPart].style.display = "none"
+	currentPart++
+	if (currentPart == parts.length-1) {
+		nextBtn.style.display = "none"
+	}
+	parts[currentPart].style.display = "block"
+	nextBtn.textContent = "Пропустить"
+}
+nextBtn.addEventListener("click", nextPart)
 // #endregion Подключения
 
 

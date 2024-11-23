@@ -285,6 +285,10 @@ dialog code {
 	background-color: #3f3f3f;
 }
 
+#connect > div:not(:nth-of-type(1)) {
+	display: none;
+}
+
 /* #region Scrollbar */
 ::-webkit-scrollbar {
 	width: 8px;

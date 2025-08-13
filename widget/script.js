@@ -40,12 +40,12 @@ function updateData() {
 
 	// Расширенный режим (включён счётчик)
 	if (countStatus.checked) {
-		
+
 		let countLimit = countLimitValue.valueAsNumber || 0
 		let boost = boostValue.valueAsNumber || 0
 		let goalLimit = goalLimitValue.valueAsNumber || 0
 
-		
+
 
 		while (sum >= goal) {
 			if (countLimit > 0 && count >= countLimit) {
@@ -56,10 +56,10 @@ function updateData() {
 				goal = goalLimitValue.valueAsNumber
 				break
 			}
-			
+
 			sum = Math.abs(goal - sum)
 			count += 1
-			
+
 			if (step != 0) {
 				if (stepMode.value == "add") {
 					goal += step
@@ -126,9 +126,20 @@ document.querySelector("#goal-limit-value").addEventListener("change", updateDat
 
 
 
+function changeMode(event) {
+	event.preventDefault();
+	const select = event.target;
+	const index = select.options.selectedIndex;
+	const newIndex = index + 1 == select.options.length ? 0 : index + 1;
+	select.value = select.options[newIndex].value;
+}
+document.querySelector("#step-mode").addEventListener("wheel", changeMode)
+document.querySelector("#boost-mode").addEventListener("wheel", changeMode)
+
+
 
 document.querySelector("#sum-add").addEventListener("keydown", (event) => {
-	if(event.key === 'Enter' || event.keyCode === 13) {
+	if (event.key === 'Enter' || event.keyCode === 13) {
 		let sum = sumValue.valueAsNumber
 		let added = event.target.valueAsNumber || 0
 		sum += added
@@ -152,7 +163,7 @@ function donate(value) {
 
 
 function loadStorage() {
-	let data = JSON.parse(window.localStorage.getItem("donategoal"+wid)) || {}
+	let data = JSON.parse(window.localStorage.getItem("donategoal" + wid)) || {}
 
 	titleValue.value = data["titleValue"] || "Сбор"
 	sumValue.value = data["sumValue"] || 0
@@ -178,7 +189,7 @@ loadStorage()
 
 
 function saveStorage() {
-	let data = JSON.parse(window.localStorage.getItem("donategoal"+wid)) || {}
+	let data = JSON.parse(window.localStorage.getItem("donategoal" + wid)) || {}
 
 	data["titleValue"] = titleValue.value
 	data["sumValue"] = sumValue.valueAsNumber
@@ -193,17 +204,17 @@ function saveStorage() {
 
 	data["boostMode"] = boostMode.value
 	data["boostValue"] = boostValue.value
-	
+
 	data["goalLimitValue"] = goalLimitValue.valueAsNumber
 
-	window.localStorage.setItem("donategoal"+wid, JSON.stringify(data))
+	window.localStorage.setItem("donategoal" + wid, JSON.stringify(data))
 }
 
 
 
 
 function clearItem() {
-	window.localStorage.removeItem("donategoal"+wid)
+	window.localStorage.removeItem("donategoal" + wid)
 	loadStorage()
 }
 

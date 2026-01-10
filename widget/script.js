@@ -17,16 +17,6 @@ const goalLimitValue = document.getElementById("goal-limit-value")
 
 const params = (new URL(document.location)).searchParams
 const wid = params.get("wid") || "0"
-const version = parseInt(params.get("v")) || 0
-
-
-if (version < 2) {
-    document.body.innerHTML = `Донатгол обновился до версии 2. Пройдите авторизацию заново.`
-    document.body.style.color = "black"
-    document.body.style.fontFamily = "sans-serif"
-    document.body.style.fontWeight = 700
-    document.body.style.fontSize = "20px"
-}
 
 
 

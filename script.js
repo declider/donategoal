@@ -118,12 +118,17 @@ document.querySelector("#copy-css").addEventListener("click", copyCSS)
 
 
 // #region Подключения
-let daToken, dpToken, dpId, seToken, dttRef, dttToken, twitchChannel, wsUrl
+let daToken
+let dpToken, dpId
+let seToken
+let dttRef, dttToken
+let twitchChannel
+let wsUrl
 
 
 function donationAlertsAuth() {
     window.open(
-        "https://www.donationalerts.com/oauth/authorize?client_id=10375&response_type=token&scope=oauth-donation-subscribe+oauth-user-show+oauth-donation-index&force_verify=true&redirect_uri=https://declider.github.io/donategoal/",
+        "https://www.donationalerts.com/oauth/authorize?client_id=10375&response_type=token&scope=oauth-donation-subscribe+oauth-user-show+oauth-donation-index&force_verify=true&redirect_uri=https://declider.github.io/donategoal/?auth=donationalerts",
         "authWindow",
         "width=600,height=800"
     )
@@ -139,13 +144,21 @@ function donationAlertsAuthFinish(accessToken) {
 }
 
 
-if (window.location.hash.startsWith("#access_token") && window.opener) {
+let params = (new URL(document.location)).searchParams
+if (params.get("auth") == "donationalerts" && window.opener) {
     let hash = window.location.hash
     window.location.hash = "#donationalerts-auth"
     let accessToken = hash.split("#access_token=")[1].split("&")[0]
     window.opener.donationAlertsAuthFinish(accessToken)
     window.close()
 }
+// if (params.get("auth") == "donatex" && window.opener) {
+//     let hash = window.location.hash
+//     window.location.hash = "#donatepay-auth"
+//     let accessToken = hash.split("#access_token=")[1].split("&")[0]
+//     window.opener.donationAlertsAuthFinish(accessToken)
+//     window.close()
+// }
 
 
 // TODO ctrl+c ctrl+v, переделать
@@ -234,8 +247,6 @@ document.querySelector("#ws-url").addEventListener("change", wsUrlAuth)
 function copyLink() {
     let url = new URL("https://declider.github.io/donategoal/widget")
     let button = document.querySelector("#copy-link")
-
-    url.searchParams.set("v", "2")
 
     if (daToken) {
         url.searchParams.set("daToken", daToken)

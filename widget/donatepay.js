@@ -4,16 +4,16 @@ let centrifugeDP
 
 //TODO - может починить 429?
 async function getDPToken() {
-	let res = await fetch('https://donatepay.ru/api/v2/socket/token', {
-		method: 'post',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({
-			"access_token": dptoken
-		})
-	})
-	return (await res.json()).token
+    let res = await fetch('https://donatepay.ru/api/v2/socket/token', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            "access_token": dptoken
+        })
+    })
+    return (await res.json()).token
 }
 
 
@@ -30,56 +30,56 @@ async function getDPToken() {
 
 
 async function startDP() {
-	let token = await getDPToken()
-	// let id = await getDPid()
-	centrifugeDP.setToken(token)
-	// const nickname = data.nickname
+    let token = await getDPToken()
+    // let id = await getDPid()
+    centrifugeDP.setToken(token)
+    // const nickname = data.nickname
 
-	centrifugeDP.on('error', (e) => {
-		console.log("error",e)
-		if(e.reason=="expired") {
-			window.location.reload(true)
-		}
-		if(!centrifugeDP.isConnected()){
-			centrifugeDP.connect()
-		}
-	})
+    centrifugeDP.on('error', (e) => {
+        console.log("error", e)
+        if (e.reason == "expired") {
+            window.location.reload(true)
+        }
+        if (!centrifugeDP.isConnected()) {
+            centrifugeDP.connect()
+        }
+    })
 
-	centrifugeDP.on('disconnect', (e) => {
-		console.log("DP отключён!")
-		console.log(e)
-		centrifugeDP.connect()
-	})
+    centrifugeDP.on('disconnect', (e) => {
+        console.log("DP отключён!")
+        console.log(e)
+        centrifugeDP.connect()
+    })
 
-	centrifugeDP.on('subscribe', (e) => {
-		console.log('subscribe', e)
-	})
+    centrifugeDP.on('subscribe', (e) => {
+        console.log('subscribe', e)
+    })
 
-	centrifugeDP.on('connect', (e) => {
-		// centrifugeDP.subscribe("$public:"+id, function (message) {
-		centrifugeDP.subscribe("$public:"+dpid, function (message) {
-			donate(message.data.notification.vars.sum)
-		})
-		console.log("Подключен DonatePay")
-	})
+    centrifugeDP.on('connect', (e) => {
+        // centrifugeDP.subscribe("$public:"+id, function (message) {
+        centrifugeDP.subscribe("$public:" + dpid, function (message) {
+            donate(message.data.notification.vars.sum)
+        })
+        console.log("Подключен DonatePay")
+    })
 
-	if(!centrifugeDP.isConnected()){
-		centrifugeDP.connect()
-	}
+    if (!centrifugeDP.isConnected()) {
+        centrifugeDP.connect()
+    }
 }
 
 
 if (dptoken && !centrifugeDP) {
-	centrifugeDP = new Centrifuge('wss://centrifugo.donatepay.ru:43002/connection/websocket', {
-		subscribeEndpoint: 'https://donatepay.ru/api/v2/socket/token',
-		subscribeParams:   {
-			access_token: dptoken
-		},
-		disableWithCredentials: true
-	})
+    centrifugeDP = new Centrifuge('wss://centrifugo.donatepay.ru:43002/connection/websocket', {
+        subscribeEndpoint: 'https://donatepay.ru/api/v2/socket/token',
+        subscribeParams: {
+            access_token: dptoken
+        },
+        disableWithCredentials: true
+    })
 }
 
 
 if (dptoken && !centrifugeDP.isConnected()) {
-	startDP()
+    startDP()
 }

@@ -4,80 +4,80 @@ const nextBtn = document.querySelector("#next-part-btn")
 
 // #region Кастомизация
 const fonts = [
-	'Roboto Slab:100,200,300,400,500,600,700,800,900',
-	'Montserrat:100,200,300,400,500,600,700,800,900',
-	'Inter:100,200,300,400,500,600,700,800,900',
-	'Oswald:200,300,400,500,600,700',
-	'Raleway:100,200,300,400,500,600,700,800,900',
-	'Nunito:200,300,400,500,600,700,800,900',
-	'Handjet:100,200,300,400,500,600,700,800,900',
-	'Pacifico:400',
-	'Caveat:400,500,600,700',
-	'Amatic SC:400,700',
-	'Russo One:400',
-	'Sofia Sans Condensed:100,200,300,400,500,600,700,800,900',
-	'Bad Script:400',
-	'Tiny5:400'
+    'Roboto Slab:100,200,300,400,500,600,700,800,900',
+    'Montserrat:100,200,300,400,500,600,700,800,900',
+    'Inter:100,200,300,400,500,600,700,800,900',
+    'Oswald:200,300,400,500,600,700',
+    'Raleway:100,200,300,400,500,600,700,800,900',
+    'Nunito:200,300,400,500,600,700,800,900',
+    'Handjet:100,200,300,400,500,600,700,800,900',
+    'Pacifico:400',
+    'Caveat:400,500,600,700',
+    'Amatic SC:400,700',
+    'Russo One:400',
+    'Sofia Sans Condensed:100,200,300,400,500,600,700,800,900',
+    'Bad Script:400',
+    'Tiny5:400'
 ]
 
 fonts.forEach(font => {
-	let option = document.createElement("option")
-	option.value = font
-	option.innerHTML = font.split(":")[0]
-	document.querySelector("#customization-fonts").appendChild(option)
+    let option = document.createElement("option")
+    option.value = font
+    option.innerHTML = font.split(":")[0]
+    document.querySelector("#customization-fonts").appendChild(option)
 })
 
 
 
 function applyFont() {
-	// #region Выбор шрифта
-	let font = document.querySelector("#customization-fonts").value.split(":")[0]
-	document.documentElement.style.setProperty('--font-family', font)
-	// #endregion Выбор шрифта
+    // #region Выбор шрифта
+    let font = document.querySelector("#customization-fonts").value.split(":")[0]
+    document.documentElement.style.setProperty('--font-family', font)
+    // #endregion Выбор шрифта
 
-	// #region Размер шрифта
-	let size = document.querySelector("#customization-sizes").value
-	document.documentElement.style.setProperty('--font-size', `${size}px`)
-	// #endregion Размер шрифта
-	
-	// #region Насыщенность шрифта
-	let weightInput = document.querySelector("#customization-weights")
-	let weights = document.querySelector("#customization-fonts").value.split(":")[1].split(",")
-	weightInput.min = weights[0]
-	if (weights.length > 1) {
-		weightInput.max = weights[weights.length - 1]
-		weightInput.step = weights[1] - weights[0]
-	} else {
-		weightInput.max = weights[0]
-		weightInput.step = 100
-	}
+    // #region Размер шрифта
+    let size = document.querySelector("#customization-sizes").value
+    document.documentElement.style.setProperty('--font-size', `${size}px`)
+    // #endregion Размер шрифта
 
-	if (weights.value > weightInput.max || weights.value < weightInput.min) {
-		weightInput.value = weights[0]
-	}
+    // #region Насыщенность шрифта
+    let weightInput = document.querySelector("#customization-weights")
+    let weights = document.querySelector("#customization-fonts").value.split(":")[1].split(",")
+    weightInput.min = weights[0]
+    if (weights.length > 1) {
+        weightInput.max = weights[weights.length - 1]
+        weightInput.step = weights[1] - weights[0]
+    } else {
+        weightInput.max = weights[0]
+        weightInput.step = 100
+    }
 
-	if (weights.length == 1) {
-		weightInput.disabled = true
-	} else {
-		weightInput.disabled = false
-	}
+    if (weights.value > weightInput.max || weights.value < weightInput.min) {
+        weightInput.value = weights[0]
+    }
 
-	let weight = weightInput.value
-	document.documentElement.style.setProperty('--font-weight', weight)
-	// #endregion Насыщенность шрифта
+    if (weights.length == 1) {
+        weightInput.disabled = true
+    } else {
+        weightInput.disabled = false
+    }
 
-	// #region Тень шрифта
-	let shadow = document.querySelector("#customization-shadow").value
-	document.documentElement.style.setProperty('--shadow', `var(--shadow-${shadow})`)
-	// #endregion Тень шрифта
+    let weight = weightInput.value
+    document.documentElement.style.setProperty('--font-weight', weight)
+    // #endregion Насыщенность шрифта
 
-	// #region Цвета
-	let color1 = document.querySelector("#customization-color-1").value
-	let color2 = document.querySelector("#customization-color-2").value
-	document.documentElement.style.setProperty('--bg-color', `linear-gradient(to right, ${color1}, ${color2})`)
-	// #endregion Цвета
+    // #region Тень шрифта
+    let shadow = document.querySelector("#customization-shadow").value
+    document.documentElement.style.setProperty('--shadow', `var(--shadow-${shadow})`)
+    // #endregion Тень шрифта
 
-	let code = `@import url('https://fonts.googleapis.com/css2?family=${font.replace(" ", "+")}:wght@${weight}&display=swap');
+    // #region Цвета
+    let color1 = document.querySelector("#customization-color-1").value
+    let color2 = document.querySelector("#customization-color-2").value
+    document.documentElement.style.setProperty('--bg-color', `linear-gradient(to right, ${color1}, ${color2})`)
+    // #endregion Цвета
+
+    let code = `@import url('https://fonts.googleapis.com/css2?family=${font.replace(" ", "+")}:wght@${weight}&display=swap');
 
 :root {
 	--bg-color: linear-gradient(to right, ${color1}, ${color2});
@@ -88,7 +88,7 @@ function applyFont() {
 }
 
 body { background-color: rgba(0, 0, 0, 0); margin: 0px auto; overflow: hidden; }`
-	document.querySelector("code").textContent = code
+    document.querySelector("code").textContent = code
 }
 
 applyFont()
@@ -102,14 +102,14 @@ document.querySelector("#customization-color-2").addEventListener("input", apply
 
 
 function copyCSS() {
-	let button = document.querySelector("#copy-css")
-	let code = document.querySelector("code").textContent
-	navigator.clipboard.writeText(code)
-	button.textContent = "Скопировано!"
+    let button = document.querySelector("#copy-css")
+    let code = document.querySelector("code").textContent
+    navigator.clipboard.writeText(code)
+    button.textContent = "Скопировано!"
 
-	setTimeout(() => {
-		button.textContent = "Скопировать"
-	}, 3000)
+    setTimeout(() => {
+        button.textContent = "Скопировать"
+    }, 3000)
 
 }
 document.querySelector("#copy-css").addEventListener("click", copyCSS)
@@ -122,148 +122,148 @@ let daToken, dpToken, dpId, seToken, dttRef, dttToken, twitchChannel, wsUrl
 
 
 function donationAlertsAuth() {
-	window.open(
-		"https://www.donationalerts.com/oauth/authorize?client_id=10375&response_type=token&scope=oauth-donation-subscribe+oauth-user-show+oauth-donation-index&force_verify=true&redirect_uri=https://declider.github.io/donategoal/",
-		"authWindow",
-		"width=600,height=800"
-	)
+    window.open(
+        "https://www.donationalerts.com/oauth/authorize?client_id=10375&response_type=token&scope=oauth-donation-subscribe+oauth-user-show+oauth-donation-index&force_verify=true&redirect_uri=https://declider.github.io/donategoal/",
+        "authWindow",
+        "width=600,height=800"
+    )
 }
 document.querySelector("#donationalerts-auth").addEventListener("click", donationAlertsAuth)
 
 
 function donationAlertsAuthFinish(accessToken) {
-	window.location.hash = "connect"
-	daToken = accessToken
-	document.querySelector("#donationalerts-title").dataset.connected = "true"
-	nextBtn.textContent = "Готово! Следующий этап"
+    window.location.hash = "connect"
+    daToken = accessToken
+    document.querySelector("#donationalerts-title").dataset.connected = "true"
+    nextBtn.textContent = "Готово! Следующий этап"
 }
 
 
 if (window.location.hash.startsWith("#access_token") && window.opener) {
-	let hash = window.location.hash
-	window.location.hash = "#donationalerts-auth"
-	let accessToken = hash.split("#access_token=")[1].split("&")[0]
-	window.opener.donationAlertsAuthFinish(accessToken)
-	window.close()
+    let hash = window.location.hash
+    window.location.hash = "#donationalerts-auth"
+    let accessToken = hash.split("#access_token=")[1].split("&")[0]
+    window.opener.donationAlertsAuthFinish(accessToken)
+    window.close()
 }
 
 
 // TODO ctrl+c ctrl+v, переделать
 function donatePayAuth() {
-	let token = document.querySelector("#donatepay-auth")
-	let id_ = document.querySelector("#donatepay-id")
-	if (token.value && token.value.length > 30 && id_.value) {
-		document.querySelector("#donatepay-title").dataset.connected = "true"
-		nextBtn.textContent = "Готово! Следующий этап"
-		dpToken = token.value
-		dpId = id_.value
-		console.log(dpToken, dpId)
-	} else {
-		document.querySelector("#donatepay-title").dataset.connected = "false"
-		nextBtn.textContent = "Пропустить"
-		dpToken = undefined
-		dpId = undefined
-	}
+    let token = document.querySelector("#donatepay-auth")
+    let id_ = document.querySelector("#donatepay-id")
+    if (token.value && token.value.length > 30 && id_.value) {
+        document.querySelector("#donatepay-title").dataset.connected = "true"
+        nextBtn.textContent = "Готово! Следующий этап"
+        dpToken = token.value
+        dpId = id_.value
+        console.log(dpToken, dpId)
+    } else {
+        document.querySelector("#donatepay-title").dataset.connected = "false"
+        nextBtn.textContent = "Пропустить"
+        dpToken = undefined
+        dpId = undefined
+    }
 }
 document.querySelector("#donatepay-auth").addEventListener("change", donatePayAuth)
 document.querySelector("#donatepay-id").addEventListener("change", donatePayAuth)
 
 
 function streamElementsAuth() {
-	let input = document.querySelector("#streamelements-auth")
-	if (input.value && input.value.length > 30) {
-		document.querySelector("#streamelements-title").dataset.connected = "true"
-		nextBtn.textContent = "Готово! Следующий этап"
-		seToken = input.value
-	} else {
-		document.querySelector("#streamelements-title").dataset.connected = "false"
-		nextBtn.textContent = "Пропустить"
-		seToken = undefined
-	}
+    let input = document.querySelector("#streamelements-auth")
+    if (input.value && input.value.length > 30) {
+        document.querySelector("#streamelements-title").dataset.connected = "true"
+        nextBtn.textContent = "Готово! Следующий этап"
+        seToken = input.value
+    } else {
+        document.querySelector("#streamelements-title").dataset.connected = "false"
+        nextBtn.textContent = "Пропустить"
+        seToken = undefined
+    }
 }
 document.querySelector("#streamelements-auth").addEventListener("change", streamElementsAuth)
 
 
 function donattyAuth() {
-	let input = document.querySelector("#donatty-auth")
-	if (input.value && input.value.includes("ref") && input.value.includes("token")) {
-		document.querySelector("#donatty-title").dataset.connected = "true"
-		nextBtn.textContent = "Готово! Следующий этап"
-		dttRef = input.value.split("ref=")[1].split("&")[0]
-		dttToken = input.value.split("token=")[1].split("&")[0]
-	} else {
-		document.querySelector("#donatty-title").dataset.connected = "false"
-		nextBtn.textContent = "Пропустить"
-		dttRef = undefined
-		dttToken = undefined
-	}
+    let input = document.querySelector("#donatty-auth")
+    if (input.value && input.value.includes("ref") && input.value.includes("token")) {
+        document.querySelector("#donatty-title").dataset.connected = "true"
+        nextBtn.textContent = "Готово! Следующий этап"
+        dttRef = input.value.split("ref=")[1].split("&")[0]
+        dttToken = input.value.split("token=")[1].split("&")[0]
+    } else {
+        document.querySelector("#donatty-title").dataset.connected = "false"
+        nextBtn.textContent = "Пропустить"
+        dttRef = undefined
+        dttToken = undefined
+    }
 }
 document.querySelector("#donatty-auth").addEventListener("change", donattyAuth)
 
 
 function twitchAuth() {
-	let input = document.querySelector("#twitch-channel")
-	if (input.value && input.value.length > 2) {
-		document.querySelector("#twitch-title").dataset.connected = "true"
-		nextBtn.textContent = "Готово! Следующий этап"
-		twitchChannel = input.value
-	} else {
-		document.querySelector("#twitch-title").dataset.connected = "false"
-		nextBtn.textContent = "Пропустить"
-		twitchChannel = undefined
-	}
+    let input = document.querySelector("#twitch-channel")
+    if (input.value && input.value.length > 2) {
+        document.querySelector("#twitch-title").dataset.connected = "true"
+        nextBtn.textContent = "Готово! Следующий этап"
+        twitchChannel = input.value
+    } else {
+        document.querySelector("#twitch-title").dataset.connected = "false"
+        nextBtn.textContent = "Пропустить"
+        twitchChannel = undefined
+    }
 }
 document.querySelector("#twitch-channel").addEventListener("change", twitchAuth)
 
 
 function wsUrlAuth() {
-	let input = document.querySelector("#ws-url")
-	if (input.value && input.value.length > 6 && input.value.startsWith("ws")) {
-		document.querySelector("#ws-title").dataset.connected = "true"
-		nextBtn.textContent = "Готово! Следующий этап"
-		wsUrl = input.value
-	} else {
-		document.querySelector("#ws-title").dataset.connected = "false"
-		nextBtn.textContent = "Пропустить"
-		wsUrl = undefined
-	}
+    let input = document.querySelector("#ws-url")
+    if (input.value && input.value.length > 6 && input.value.startsWith("ws")) {
+        document.querySelector("#ws-title").dataset.connected = "true"
+        nextBtn.textContent = "Готово! Следующий этап"
+        wsUrl = input.value
+    } else {
+        document.querySelector("#ws-title").dataset.connected = "false"
+        nextBtn.textContent = "Пропустить"
+        wsUrl = undefined
+    }
 }
 document.querySelector("#ws-url").addEventListener("change", wsUrlAuth)
 
 
 function copyLink() {
-	let url = new URL("https://declider.github.io/donategoal/widget")
-	let button = document.querySelector("#copy-link")
+    let url = new URL("https://declider.github.io/donategoal/widget")
+    let button = document.querySelector("#copy-link")
 
-	url.searchParams.set("v", "2")
+    url.searchParams.set("v", "2")
 
-	if (daToken) {
-		url.searchParams.set("daToken", daToken)
-	}
-	if (dpToken && dpId) {
-		url.searchParams.set("dpToken", dpToken)
-		url.searchParams.set("dpId", dpId)
-	}
-	if (seToken) {
-		url.searchParams.set("seToken", seToken)
-	}
-	if (dttRef && dttToken) {
-		url.searchParams.set("dttRef", dttRef)
-		url.searchParams.set("dttToken", dttToken)
-	}
-	if (twitchChannel) {
-		url.searchParams.set("twitchChannel", twitchChannel)
-	}
-	if (wsUrl) {
-		url.searchParams.set("wsUrl", wsUrl)
-	}
+    if (daToken) {
+        url.searchParams.set("daToken", daToken)
+    }
+    if (dpToken && dpId) {
+        url.searchParams.set("dpToken", dpToken)
+        url.searchParams.set("dpId", dpId)
+    }
+    if (seToken) {
+        url.searchParams.set("seToken", seToken)
+    }
+    if (dttRef && dttToken) {
+        url.searchParams.set("dttRef", dttRef)
+        url.searchParams.set("dttToken", dttToken)
+    }
+    if (twitchChannel) {
+        url.searchParams.set("twitchChannel", twitchChannel)
+    }
+    if (wsUrl) {
+        url.searchParams.set("wsUrl", wsUrl)
+    }
 
-	navigator.clipboard.writeText(url.toString())
-	button.textContent = "Скопировано!"
+    navigator.clipboard.writeText(url.toString())
+    button.textContent = "Скопировано!"
 
-	setTimeout(() => {
-		button.textContent = "Скопировать ссылку"
-	}, 3000)
+    setTimeout(() => {
+        button.textContent = "Скопировать ссылку"
+    }, 3000)
 }
 document.querySelector("#copy-link").addEventListener("click", copyLink)
 
@@ -271,14 +271,14 @@ document.querySelector("#copy-link").addEventListener("click", copyLink)
 
 let currentPart = 0
 function nextPart() {
-	let parts = document.querySelectorAll(".auth-part")
-	parts[currentPart].style.display = "none"
-	currentPart++
-	if (currentPart == parts.length-1) {
-		nextBtn.style.display = "none"
-	}
-	parts[currentPart].style.display = "block"
-	nextBtn.textContent = "Пропустить"
+    let parts = document.querySelectorAll(".auth-part")
+    parts[currentPart].style.display = "none"
+    currentPart++
+    if (currentPart == parts.length - 1) {
+        nextBtn.style.display = "none"
+    }
+    parts[currentPart].style.display = "block"
+    nextBtn.textContent = "Пропустить"
 }
 nextBtn.addEventListener("click", nextPart)
 // #endregion Подключения
@@ -287,12 +287,12 @@ nextBtn.addEventListener("click", nextPart)
 
 
 function showCommands() {
-	document.querySelector("dialog#mod-commands").showModal()
+    document.querySelector("dialog#mod-commands").showModal()
 }
 document.querySelector("#show-commands").addEventListener("click", showCommands)
 
 
 function showRules() {
-	document.querySelector("dialog#rules").showModal()
+    document.querySelector("dialog#rules").showModal()
 }
 document.querySelector("#show-rules").addEventListener("click", showRules)

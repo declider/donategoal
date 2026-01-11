@@ -288,6 +288,9 @@ function copyLink() {
     if (daToken) {
         url.searchParams.set("daToken", daToken)
     }
+    if (dxToken) {
+        url.searchParams.set("dxToken", dxToken)
+    }
     if (dpToken && dpId) {
         url.searchParams.set("dpToken", dpToken)
         url.searchParams.set("dpId", dpId)

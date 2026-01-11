@@ -46,11 +46,6 @@
             https://api-013.donatty.com
             https://donatex.gg
             https://declider.helioho.st;
-
-        frame-ancestors
-            'self'
-            https://obsproject.com
-            obs:;
         ">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -98,7 +93,7 @@
         </div>
 
         <div>
-            Включить счётчик и автоматически обновлять сбор
+            Включить счётчик и автоматически обновлять полоску сбора
             <input type="checkbox" id="count-status" checked>
             <div id="count-settings">
                 <br>
@@ -106,13 +101,13 @@
                 <input type="number" id="count-value" min="0" value="0"><br><br>
 
                 <span>
-                    Максимальное значение на счётчике
+                    Ограничить максимальное значение на счётчике:
                 </span>
                 <input type="number" id="count-limit-value" value="0" min="0">
                 (0 = без ограничения)<br><br>
 
                 <span title="Цель сбора (справа на донатголе) будет увеличиваться при каждом успешном сборе">
-                    Увеличивать цель сбора при успешном сборе
+                    Шаг увеличения цели: при заполнении полоски цель сбора будет увеличена
                 </span>
                 <select id="step-mode" title="Если не работает ЛКМ - крути колёсико мыши">
                     <option value="add" selected>на</option>
@@ -123,7 +118,7 @@
 
                 <span
                     title="При успешном сборе будет увеличиваться не только цель сбора, но и число на которое эта цель увеличивается.">
-                    Увеличивать сумму увеличения при успешном сборе
+                    Динамический шаг увеличения цели: каждый следующий шаг увеличения цели будет увеличен
                 </span>
                 <select id="boost-mode" title="Если не работает ЛКМ - крути колёсико мыши">
                     <option value="add" selected>на</option>
@@ -132,7 +127,7 @@
                 <input type="number" id="boost-value" min="0" value="0">
                 (0 = не увеличивать)<br><br>
 
-                Максимальная возможная цель сбора
+                Ограничить максимальную цель сбора:
                 <input type="number" id="goal-limit-value">
                 (0 = без ограничения)<br>
 

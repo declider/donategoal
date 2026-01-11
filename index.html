@@ -4,11 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="
-	default-src 'self'; 
-	script-src 'self'; 
-	style-src 'self' https://fonts.googleapis.com http://fonts.googleapis.com;
-  	font-src 'self' https://fonts.gstatic.com;">
     <title>Донатгол для ивентов</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,6 +64,7 @@
         <div class="feature">
             <h2>Одновременная поддержка
                 <span>DonationAlerts</span>,
+                <span>DonateX</span>,
                 <span>DonatePay</span>,
                 <span>Donatty</span> и
                 <span title="Работает только с рублями.">StreamElements</span>
@@ -124,6 +120,11 @@
         <div class="auth-part">
             <h2 id="donationalerts-title">DonationAlerts</h2>
             <button id="donationalerts-auth">Авторизоваться</button>
+        </div>
+        <div class="auth-part">
+            <h2 id="donatex-title">DonateX</h2>
+            Скопируйте <a href="https://donatex.gg/streamer/settings" , target="_blank">отсюда</a>
+            <input id="donatex-auth" placeholder="Секретный API ключ" type="password">
         </div>
         <div class="auth-part">
             <h2 id="donatepay-title">DonatePay</h2>

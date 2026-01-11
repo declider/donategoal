@@ -5,32 +5,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Security-Policy" content="
-		default-src 'self' https://*;
-		script-src 'self' https://cdn.jsdelivr.net https://cdn.socket.io;
-		style-src 'self' https://fonts.googleapis.com http://fonts.googleapis.com 'unsafe-inline';
-  		font-src 'self' https://fonts.gstatic.com;
-		connect-src 'self' 
-			ws://localhost:* 
-			ws://127.0.0.1:* 
-			wss://* 
-			wss://*:* 
-			https://realtime.streamelements.com 
-			https://declider.helioho.st/api/da_data 
-			https://centrifugo.donationalerts.com 
-			https://www.donationalerts.com/api/v1/centrifuge/subscribe 
-			https://donatepay.ru/api/v2/socket/token 
-			https://centrifugo.donatepay.ru:43002 
-			https://api-012.donatty.com 
-			http://api-013.donatty.com;
-		">
+        default-src 'none';
+
+        base-uri 'self';
+        object-src 'none';
+        form-action 'none';
+
+        script-src
+            'self'
+            https://cdn.jsdelivr.net
+            https://cdn.socket.io
+            https://cdnjs.cloudflare.com;
+
+        style-src
+            'self'
+            https://fonts.googleapis.com
+            'unsafe-inline';
+
+        font-src
+            https://fonts.gstatic.com;
+
+        img-src
+            'self'
+            https:
+            data:;
+
+        connect-src
+            'self'
+            ws://localhost:*
+            ws://127.0.0.1:*
+            wss://realtime.streamelements.com
+            wss://centrifugo.donationalerts.com
+            https://www.donationalerts.com
+            https://donatepay.ru
+            wss://centrifugo.donatepay.ru:43002
+            https://api-012.donatty.com
+            http://api-013.donatty.com
+            https://donatex.gg
+            https://declider.helioho.st;
+
+        frame-ancestors
+            'self'
+            https://obsproject.com
+            obs:;
+        ">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Виджет</title>
     <link rel="stylesheet" href="style.css">
+
+
     <script src="https://cdn.jsdelivr.net/gh/centrifugal/centrifuge-js@2.X.X/dist/centrifuge.min.js"></script>
     <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"
         integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/comfy.js@latest/dist/comfy.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js"
+        integrity="sha512-kkMt8UThSmWcdXLYFaGZ/U6vyWSNLZMUWQ5SMeF80pGqrEkH5ei9D/3MbVQpB8p7D5C3A4vlX7BpsWTT2BfB6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>

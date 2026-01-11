@@ -119,18 +119,22 @@ document.querySelector("#copy-css").addEventListener("click", copyCSS)
 
 // #region Подключения
 let daToken
+let dxToken
 let dpToken, dpId
 let seToken
 let dttRef, dttToken
 let twitchChannel
 let wsUrl
 
+let params = (new URL(document.location)).searchParams
+
+// #region DonationAlerts
 
 function donationAlertsAuth() {
     window.open(
         "https://www.donationalerts.com/oauth/authorize?client_id=10375&response_type=token&scope=oauth-donation-subscribe+oauth-user-show+oauth-donation-index&force_verify=true&redirect_uri=https://declider.github.io/donategoal/?auth=donationalerts",
         "authWindow",
-        "width=600,height=800"
+        "width=800,height=800"
     )
 }
 document.querySelector("#donationalerts-auth").addEventListener("click", donationAlertsAuth)
@@ -144,7 +148,6 @@ function donationAlertsAuthFinish(accessToken) {
 }
 
 
-let params = (new URL(document.location)).searchParams
 if (params.get("auth") == "donationalerts" && window.opener) {
     let hash = window.location.hash
     window.location.hash = "#donationalerts-auth"
@@ -152,14 +155,30 @@ if (params.get("auth") == "donationalerts" && window.opener) {
     window.opener.donationAlertsAuthFinish(accessToken)
     window.close()
 }
-// if (params.get("auth") == "donatex" && window.opener) {
-//     let hash = window.location.hash
-//     window.location.hash = "#donatepay-auth"
-//     let accessToken = hash.split("#access_token=")[1].split("&")[0]
-//     window.opener.donationAlertsAuthFinish(accessToken)
-//     window.close()
-// }
 
+// #endregion DonationAlerts
+
+
+// #region DonateX
+
+function donatexAuth() {
+    let token = document.querySelector("#donatex-auth")
+    if (token.value && token.value.length > 30) {
+        document.querySelector("#donatex-title").dataset.connected = "true"
+        nextBtn.textContent = "Готово! Следующий этап"
+        dxToken = token.value
+    } else {
+        document.querySelector("#donatex-title").dataset.connected = "false"
+        nextBtn.textContent = "Пропустить"
+        dxToken = undefined
+    }
+}
+document.querySelector("#donatex-auth").addEventListener("change", donatexAuth)
+
+// #endregion DonateX
+
+
+// #region DonatePay
 
 // TODO ctrl+c ctrl+v, переделать
 function donatePayAuth() {
@@ -181,6 +200,10 @@ function donatePayAuth() {
 document.querySelector("#donatepay-auth").addEventListener("change", donatePayAuth)
 document.querySelector("#donatepay-id").addEventListener("change", donatePayAuth)
 
+// #endregion DonatePay
+
+
+// #region StreamElements
 
 function streamElementsAuth() {
     let input = document.querySelector("#streamelements-auth")
@@ -196,6 +219,10 @@ function streamElementsAuth() {
 }
 document.querySelector("#streamelements-auth").addEventListener("change", streamElementsAuth)
 
+// #endregion StreamElements
+
+
+// #region Donatty
 
 function donattyAuth() {
     let input = document.querySelector("#donatty-auth")
@@ -213,6 +240,10 @@ function donattyAuth() {
 }
 document.querySelector("#donatty-auth").addEventListener("change", donattyAuth)
 
+// #endregion Donatty
+
+
+// #region Twitch
 
 function twitchAuth() {
     let input = document.querySelector("#twitch-channel")
@@ -228,6 +259,10 @@ function twitchAuth() {
 }
 document.querySelector("#twitch-channel").addEventListener("change", twitchAuth)
 
+// #endregion Twitch
+
+
+// #region WS
 
 function wsUrlAuth() {
     let input = document.querySelector("#ws-url")
@@ -242,6 +277,8 @@ function wsUrlAuth() {
     }
 }
 document.querySelector("#ws-url").addEventListener("change", wsUrlAuth)
+
+// #endregion WS
 
 
 function copyLink() {
